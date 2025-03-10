@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/5/2024 3:13:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JWEBB"
+  DTS:CreatorName="SARAPATH\jwebb"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{1E15D4FD-1FAD-4BE5-A711-B33226EF3D55}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Test"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{58D04546-D953-49D2-902D-24665C583CFB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0A9E210C-F200-41D6-A927-4A06142795CE}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SPWH;User ID=sa;Initial Catalog=CopathDistribution;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{45C3773B-DB4B-44D5-A07B-D7AC571F2B04}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SPSQL;User ID=sa;Initial Catalog=CopathDistribution;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{2B09103C-810E-44D5-BB77-3A42D726B2DC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - tblActs"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - tblActs"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tblActs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - tblActs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[iActID]"
+                      cachedDataType="i4"
+                      cachedName="iActID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[iActID]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[cActName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cActName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActName]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[cActLabel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="cActLabel"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActLabel]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActLabel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[cActType]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="cActType"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActType]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActType]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[iActOrder]"
+                      cachedDataType="i2"
+                      cachedName="iActOrder"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[iActOrder]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActOrder]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].Columns[lActActive]"
+                      cachedDataType="bool"
+                      cachedName="lActActive"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[lActActive]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[lActActive]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[iActID]"
+                      dataType="i4"
+                      name="iActID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActName]"
+                      dataType="wstr"
+                      length="50"
+                      name="cActName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActLabel]"
+                      dataType="wstr"
+                      length="10"
+                      name="cActLabel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[cActType]"
+                      dataType="wstr"
+                      length="1"
+                      name="cActType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[iActOrder]"
+                      dataType="i2"
+                      name="iActOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input].ExternalColumns[lActActive]"
+                      dataType="bool"
+                      name="lActActive" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - tblActs.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - tblActs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - tblActs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - tblActs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - tblActs"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - tblActs"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tblActs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - tblActs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[iActID]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActID]"
+                      name="iActID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActName]"
+                      name="cActName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActLabel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActLabel]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActLabel]"
+                      name="cActLabel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActType]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[cActType]"
+                      name="cActType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActOrder]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[iActOrder]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[iActOrder]"
+                      name="iActOrder"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[lActActive]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[lActActive]"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].Columns[lActActive]"
+                      name="lActActive"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[iActID]"
+                      dataType="i4"
+                      name="iActID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActName]"
+                      dataType="wstr"
+                      length="50"
+                      name="cActName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActLabel]"
+                      dataType="wstr"
+                      length="10"
+                      name="cActLabel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[cActType]"
+                      dataType="wstr"
+                      length="1"
+                      name="cActType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[iActOrder]"
+                      dataType="i2"
+                      name="iActOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output].ExternalColumns[lActActive]"
+                      dataType="bool"
+                      name="lActActive" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[iActID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[iActID]"
+                      name="iActID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActName]"
+                      name="cActName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActLabel]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActLabel]"
+                      name="cActLabel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActType]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[cActType]"
+                      name="cActType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[iActOrder]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[iActOrder]"
+                      name="iActOrder" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[lActActive]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[lActActive]"
+                      name="lActActive" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - tblActs.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - tblActs.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

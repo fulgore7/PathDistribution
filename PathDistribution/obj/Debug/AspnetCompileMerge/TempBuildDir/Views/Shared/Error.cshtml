@@ -1,0 +1,25 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Pathologist Distribution - Failure";
+}
+
+<div id="content" style="min-height:441px">
+    <div id="container" style="height:441px;display:flex;">
+        <table style="padding-top:15px;">
+            <tr>
+                <td>Something has gone wrong.  You will need to try again.</td>
+            </tr>
+            <tr>
+                <td>The error message below has been emailed to MIS.  Click @Html.ActionLink("here", "Index", "Start") to start again.</td>
+            </tr>
+            <tr>
+                <td>@Model.ControllerName in @Model.ActionName</td>
+            </tr>
+            <tr>
+                <td>@Model.Exception.Message</td>
+            </tr>
+        </table>
+    </div>
+</div>
+

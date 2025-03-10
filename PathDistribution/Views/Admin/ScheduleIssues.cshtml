@@ -1,0 +1,13 @@
+﻿@model List<PathDistribution.Models.ScheduleIssues>
+@if (Model.Any())
+{
+<div style="padding-top:25px;padding-bottom:5px;font-weight:bold;color:red;">Issues</div>
+<table style="width:100%;color:red">
+    @foreach (var off in Model)
+    {
+        <tr>
+            <td>@Html.Raw(off.Issues)</td>
+        </tr>
+    }
+</table>
+}

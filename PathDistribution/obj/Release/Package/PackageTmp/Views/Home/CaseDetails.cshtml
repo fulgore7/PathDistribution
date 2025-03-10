@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PathDistribution.Models.CaseDetails>
+
+@helper AddRowHeader(PathDistribution.Models.CaseDetails subitem, int slidecount)
+{
+    string bgcolor = subitem.BGColor == "White" ? "": "background-color:" + subitem.BGColor + ";";
+
+    <tr class="text5" style="text-align:left;font-weight:bold;@bgcolor">
+        <td class="pm plus" style="width:6px"></td>
+        <td>
+            <span style="color:@subitem.PriorityColor;float:left;">@Html.DisplayFor(modelItem => subitem.specnum_formatted)</span>
+            <span class="text2" style="float:left;margin-left:2px;">(@slidecount)</span>
+            @if (subitem.IsFrozen)
+            {
+                <span class="text2" style="margin-left:2px;color:cornflowerblue">Fr</span>
+            }
+            @if (subitem.SatMon)
+            {
+                <span class="text2" style="margin-left:2px;color:red">SAT</span>
+            }
+        </td>
+        <td>
+            @Html.DropDownList("Paths", new SelectList(subitem.Paths, subitem.chrPath), new { @style = "margin-left:10px;" })
+            @if (Convert.ToBoolean(ViewData["IsOff"]))
+            {
+                <span class="text2" style="float:right;margin-right:15px">@Html.DisplayFor(modelItem => subitem.SecondaryAssignmentType)</span>
+            }
+            else
+            {
+                <span class="text2" style="float:right;margin-right:15px">@Html.DisplayFor(modelItem => subitem.AssignmentType)</span>
+            }
+        </td>
+        <td colspan="8">@Html.DisplayFor(modelItem => subitem.ordererclient)<span class="text2" style="float:right;margin-right:15px">@Html.DisplayFor(modelItem => subitem.PartGroup)</span></td>
+    </tr>
+}
+@helper AddRow(PathDistribution.Models.CaseDetails subitem)
+{
+    <tr class="text5" style="display:none;text-align:left;font-weight:@subitem.PriorityWeight;color:@subitem.PriorityColor">
+        <td style="width:6px"></td>
+        <td>@Html.DisplayFor(modelItem => subitem.parttype)</td>
+        <td>@Html.DisplayFor(modelItem => subitem.stainabbr)</td>
+        <td style="width:1px;white-space:nowrap;">@Html.DisplayFor(modelItem => subitem.block)</td>
+        <td class="slidecount" style="width:1px;white-space:nowrap;">@Html.DisplayFor(modelItem => subitem.slidecountactual)</td>
+        <td style="width:1px;white-space:nowrap;">@Html.DisplayFor(modelItem => subitem.catabbr)</td>
+        <td>@Html.DisplayFor(modelItem => subitem.blocklabel)</td>
+        <td style="width:1px;white-space:nowrap;">@Html.DisplayFor(modelItem => subitem.stainorderdate)</td>
+    </tr>
+}
+
+@if (Model.Any())
+{
+    bool firstpass = true;
+    string name = Model.First().chrPath;
+
+    <tr class="detail" style="display:none">
+        <td colspan="13">
+            <table style="width:100%; padding-top:5px;" id="details@(name)" cellpadding="0" cellspacing="0">
+                <tr class="text2" style="text-align:left;color:black;font-weight:bold">
+                    <td style="width:6px"></td>
+                    <td>Part Type</td>
+                    <td>Stain Abbr</td>
+                    <td>Block</td>
+                    <td>Count</td>
+                    <td>Category</td>
+                    <td>Block Label</td>
+                    <td>Order Date</td>
+                </tr>
+
+                @foreach (var subitem in Model)
+                {
+                    if (subitem.RowID == 1)
+                    {
+                        if (!firstpass)
+                        {
+                            @:</tbody>
+                        }
+
+                        int slidecount = Model.Where(x => x.specnum_formatted == subitem.specnum_formatted).Sum(y => y.slidecount);
+
+                        @:<tbody data-group="@subitem.specnum_formatted" data-path="@subitem.chrPath" data-slidecount="@slidecount">
+                            @AddRowHeader(subitem, slidecount)
+
+                    }
+
+                    @AddRow(subitem)
+
+                    firstpass = false;
+                }
+        </table>
+    </td>
+</tr>
+}

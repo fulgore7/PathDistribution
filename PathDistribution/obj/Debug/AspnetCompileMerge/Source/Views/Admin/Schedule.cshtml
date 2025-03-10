@@ -1,0 +1,516 @@
+﻿@model PathDistribution.Models.ScheduleData
+
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_LayoutSched.cshtml";
+}
+
+@section styles
+{
+    <style>
+        .ui-datepicker-week-col,
+        .ui-datepicker-month,
+        .ui-datepicker-year {
+            text-align: center;
+        }
+
+        #weekpicker {
+            width: 90px;
+            text-align: center;
+        }
+
+        .ui-widget-content {
+            border: 1px solid #dddddd;
+            background: #ffffff;
+            color: #333333;
+        }
+
+        .ui-autocomplete li {
+            background-image: none;
+        }
+
+        th.ui-datepicker-week-end,
+        td.ui-datepicker-week-end {
+            display: none;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script type="text/javascript" language="javascript">
+        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+        function changeDate(dateText, weekpicker) {
+            var dte = new Date(dateText);
+            $(weekpicker).datepicker("setDate", dateText);
+            $(weekpicker).val($.datepicker.iso8601Week(dte) + "-" + dte.getFullYear().toString());
+
+            var mon = new Date(dte.setDate(dte.getDate() - dte.getDay() + 1));
+            var sun = new Date(dte.setDate(dte.getDate() - dte.getDay() + 7));
+
+            const dtf = new Intl.DateTimeFormat("en-US");
+            $("#Monday").text(dtf.format(mon));
+            $("#Sunday").text(dtf.format(sun));
+
+            $.when(RefreshPartialView("SCHEDULEWEEK", $(weekpicker).val()),
+                RefreshPartialView("SCHEDULEOFF", $(weekpicker).val()),
+                RefreshPartialView("SCHEDULECOMMENTS", $(weekpicker).val()),
+                RefreshPartialView("SCHEDULEISSUES", $(weekpicker).val()));
+        }
+
+        $(function () {
+
+            $("#weekprev").on("click", function () {
+                var dte = new Date($("#Monday").text());
+                dte.setDate(dte.getDate() - 7);
+                changeDate(dte, $("#weekpicker"));
+            });
+
+            $("#weeknext").on("click", function () {
+                var dte = new Date($("#Monday").text());
+                dte.setDate(dte.getDate() + 7);
+                changeDate(dte, $("#weekpicker"));
+            });
+
+            $("#weekpicker").datepicker({
+                showWeek: true,
+                changeMonth: true,
+                changeYear: true,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                firstDay: 1,
+                minDate: new Date(new Date().getFullYear() - 2, 0, 1),
+                yearRange: (new Date().getFullYear() - 2).toString() + ":" + (new Date().getFullYear() + 2).toString(),
+                beforeShowDay: function (date) {
+                    setTimeout(function () {
+                        $("#ui-datepicker-div").find(".ui-state-highlight").removeClass().addClass("ui-state-default");
+                        $("#ui-datepicker-div").find(".ui-datepicker-today").removeClass();
+                    }, 100);
+                    return [true, '', ''];
+                },
+                beforeShow: function (input, inst) {
+                    $(this).datepicker("setDate", new Date($("#Monday").text()));
+                },
+                onSelect: function (dateText, inst) {
+                    var dte = new Date(dateText);
+                    $("#weekpicker").datepicker("setDate", dateText);
+                    inst.input.val($.datepicker.iso8601Week(dte) + "-" + dte.getFullYear().toString());
+
+                    var mon = new Date(dte.setDate(dte.getDate() - dte.getDay() + 1));
+                    var sun = new Date(dte.setDate(dte.getDate() - dte.getDay() + 7));
+
+                    const dtf = new Intl.DateTimeFormat("en-US");
+                    $("#Monday").text(dtf.format(mon));
+                    $("#Sunday").text(dtf.format(sun));
+
+                    $.when(RefreshPartialView("SCHEDULEWEEK", $(this).val()),
+                           RefreshPartialView("SCHEDULEOFF", $(this).val()),
+                           RefreshPartialView("SCHEDULECOMMENTS", $(this).val()),
+                           RefreshPartialView("SCHEDULEISSUES", $(this).val()));
+                }
+            }).val($.datepicker.iso8601Week(new Date()) + "-" + new Date().getFullYear().toString());
+
+            $(document)
+                .on('mousemove', '.ui-datepicker-calendar tr', function () { $(this).find('td a').addClass('ui-state-hover'); })
+                .on('mouseleave', '.ui-datepicker-calendar tr', function () { $(this).find('td a').removeClass('ui-state-hover'); });
+
+            $.when(RefreshPathAssList(),RefreshPathOffList(),RefreshComments());
+
+            var dte = new Date();
+            var mon = new Date(dte.setDate(dte.getDate() - dte.getDay() + 1));
+            var sun = new Date(dte.setDate(dte.getDate() - dte.getDay() + 7));
+
+            const dtf = new Intl.DateTimeFormat("en-US");
+            $("#Monday").text(dtf.format(mon));
+            $("#Sunday").text(dtf.format(sun));
+        });
+
+        function RefreshPathAssList() {
+            $('#WECALL').on('change', function () {
+                var dte = new Date($("#Monday").text());
+                ChangeScheduledPath('WECALL', dte, this.value);
+            });
+
+            $('input.PathAssList').autocomplete({
+                source: function (request, response) {
+                    var map = {};
+                    map["chrAbbr"] = this.element.attr("data-abbr");
+                    map["dteAssigned"] = this.element.attr("data-assigned");
+                    $.ajax({
+                        url: '@Url.Action("GetSchedWeekPathList", "Admin")',
+                        dataType: "json",
+                        type: "POST",
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(map),
+                        async: true,
+                        processData: false,
+                        cache: false
+                    }).done(function (result) {
+                        if (result.Status == "Success") {
+                            response(result.data);
+                        } else {
+                            alert("Oops");
+                        }
+                    });
+                },
+                minLength: 0,
+                open: function () {
+                    $(this).autocomplete("widget").css("width", "90px");
+                },
+                create: function () {
+                    $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                        if (item.chrPath == "") {
+                            var hide = this.element.val() == "" ? "display:none;" : "";
+
+                            return $("<li class='ui-menu-item' style='" + hide + "'>")
+                                .append("<div style='display:flex;justify-content: space-between;width:100%'><div style='width:100%;text-align:center;font-weight:bold;background-color:#EFE8DE;padding:2px;'>Clear</div>")
+                                .appendTo(ul);
+                        } else {
+                            return $("<li class='ui-menu-item'>")
+                                .append("<div style='display:flex;justify-content: space-between;width:100%'><div style='width:49%;border-right:1px solid black'>" + item.chrPath + "</div><div style='width:49%;padding-left:3px;'>" + item.AssnSum + "</div>")
+                                .appendTo(ul);
+                        }
+                    };
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+
+                    var abbr = $(this).attr("data-abbr");
+                    var assigned = $(this).attr("data-assigned");
+                    var path = ui.item.chrPath;
+
+                    $(this).val(path);
+
+                    ChangeScheduledPath(abbr, assigned, path);
+                }
+            }).focus(function () {
+                $(this).autocomplete('search', '');
+            });
+        }
+
+        function RefreshPathOffList() {
+            $('input.PathOffList').autocomplete({
+                source: function (request, response) {
+                    var dte = new Date($("#Monday").text());
+                    dte.setDate(dte.getDate() + days.indexOf(this.element.attr("data-dw")));
+                    var map = {};
+                    map["chrPath"] = this.element.attr("data-path");
+                    map["dteAssigned"] = dte;
+                    $.ajax({
+                        url: '@Url.Action("GetSchedWeekPathOffList", "Admin")',
+                        dataType: "json",
+                        type: "POST",
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(map),
+                        async: true,
+                        processData: false,
+                        cache: false
+                    }).done(function (result) {
+                        if (result.Status == "Success") {
+                            response(result.data);
+                        } else {
+                            alert("Oops");
+                        }
+                    });
+                },
+                minLength: 0,
+                create: function () {
+                    $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                        if (item.cActLabel == "") {
+                            var hide = this.element.val() == "" ? "display:none;" : "";
+                            return $("<li class='ui-menu-item' style='" + hide + "'>")
+                                .append("<div style='text-align:center;font-weight:bold;background-color:#EFE8DE;padding:2px;'>Clear</div>")
+                                .appendTo(ul);
+                        } else {
+                            return $("<li class='ui-menu-item'>")
+                                .append("<div>" + item.cActLabel + "</div>")
+                                .appendTo(ul);
+                        }
+                    };
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+
+                    var dte = new Date($("#Monday").text());
+                    dte.setDate(dte.getDate() + days.indexOf($(this).attr("data-dw")));
+
+                    var abbr = ui.item.cActLabel;
+                    var assigned = dte;
+                    var path = $(this).attr("data-path");
+
+                    $(this).val(abbr);
+
+                    ChangeScheduledOffPath(abbr, assigned, path);
+                }
+            }).focus(function () {
+                $(this).autocomplete('search', '');
+            });
+        }
+
+        function RefreshComments() {
+            $("input[name='cmt.chrComment']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("GetCannedComments", "Admin")',
+                        dataType: "json",
+                        type: "POST",
+                        contentType: 'application/json; charset=utf-8',
+                        async: true,
+                        processData: false,
+                        cache: false
+                    }).done(function (result) {
+                        if (result.Status == "Success") {
+                            response(result.data);
+                        } else {
+                            alert("Oops");
+                        }
+                    });
+                },
+                minLength: 0,
+                create: function () {
+                    $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                        return $("<li>")
+                            .append("<div>" + item.chrComment + "</div>")
+                            .appendTo(ul);
+                    };
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    if (ui.item.chrComment === "*** AMENDED // ***") {
+                        $(this).val("*** AMENDED " + new Date().toLocaleDateString('es-pa') + " ***");
+                    } else {
+                        $(this).val(ui.item.chrComment);
+                    }
+                    ChangeScheduledComments(
+                        $(this).closest("tr").data("id").toString(),
+                        $("#Monday").text(),
+                        $(this).val()
+                    )
+                },
+                change: function (event, ui) {
+                    ChangeScheduledComments(
+                        $(this).closest("tr").data("id").toString(),
+                        $("#Monday").text(),
+                        $(this).val()
+                    )
+                }
+            }).focus(function () {
+                $(this).autocomplete('search', '');
+            });
+        }
+
+        function ChangeScheduledComments(pkComment, dteWeek, chrComment) {
+            var map = {};
+            map["pkComment"] = pkComment;
+            map["dteWeek"] = dteWeek;
+            map["chrComment"] = chrComment;
+
+            $.ajax({
+                url: '@Url.Action("UpsertScheduleComments", "Admin")',
+                dataType: "html",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(map),
+                async: true,
+                processData: false,
+                cache: false
+            }).done(function (result) {
+                $("#SCHEDULECOMMENTS").html(result);
+                RefreshComments();
+            });
+        }
+
+        function ChangeScheduledPath(chrAbbr, dteAssigned, chrPath) {
+            var map = {};
+            map["chrAbbr"] = chrAbbr;
+            map["dteAssigned"] = dteAssigned;
+            map["chrPath"] = chrPath;
+
+            $.ajax({
+                url: '@Url.Action("UpsertScheduledPath", "Admin")',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(map),
+                async: true,
+                processData: false,
+                cache: false
+            }).done(function (result) {
+                var dte = $("#weekpicker").val();
+                $.when(RefreshPartialView("SCHEDULEWEEK", dte),
+                       RefreshPartialView("SCHEDULEOFF", dte),
+                       RefreshPartialView("SCHEDULECOMMENTS", dte),
+                       RefreshPartialView("SCHEDULEISSUES", dte));
+            });
+        }
+
+        function ChangeScheduledOffPath(chrAbbr, dteAssigned, chrPath) {
+            var map = {};
+            map["chrAbbr"] = chrAbbr;
+            map["dteAssigned"] = dteAssigned;
+            map["chrPath"] = chrPath;
+
+            $.ajax({
+                url: '@Url.Action("UpsertScheduledOffPath", "Admin")',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(map),
+                async: true,
+                processData: false,
+                cache: false
+            }).done(function (result) {
+                var dte = $("#weekpicker").val();
+                $.when(RefreshPartialView("SCHEDULEWEEK", dte),
+                       RefreshPartialView("SCHEDULEOFF", dte),
+                    RefreshPartialView("SCHEDULECOMMENTS", dte),
+
+                    RefreshPartialView("SCHEDULEISSUES", dte));
+            });
+        }
+
+        function RefreshPartialView(pv, dte) {
+            var map = {};
+            map["partialView"] = pv;
+            map["weekyear"] = dte;
+
+            $.ajax({
+                url: '@Url.Action("RefreshSchedulePartial", "Admin")',
+                dataType: "html",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(map),
+                async: true,
+                processData: false,
+                cache: false
+            }).done(function (result) {
+
+                switch (pv) {
+                    case "SCHEDULEWEEK":
+                        var oldrows = $("#" + pv + " tbody").children();
+
+                        $("#" + pv).html(result);
+
+                        var newrows = $("#" + pv + " tbody").children();
+
+                        $(newrows).each(function (rn, newrow) {
+
+                            var newcells = $(newrow).children();
+
+                            var oldrow = $(oldrows).eq(rn);
+                            var oldcells = $(oldrow).children();
+
+                            newcells.each(function (cn, newcell) {
+
+                                var oldcell = $(oldcells).eq(cn);
+
+                                if ($(newcell).has("input")) {
+
+                                    var oldtxt = $(oldcell).find("input");
+                                    var newtxt = $(newcell).find("input");
+
+                                    if (oldtxt.val() !== newtxt.val()) {
+                                        $(newtxt).animate({ backgroundColor: "#EFE7DC" }, 2000)
+                                            .animate({ backgroundColor: "#fff" }, 2000);
+                                    }
+                                }
+                            });
+                        });
+
+                        RefreshPathAssList();
+                        break;
+                    case "SCHEDULEOFF":
+                        var oldrows = $("#" + pv + " tbody").children();
+
+                        $("#" + pv).html(result);
+
+                        var newrows = $("#" + pv + " tbody").children();
+
+                        $(newrows).each(function (rn, newrow) {
+
+                            var newcells = $(newrow).children();
+
+                            var oldrow = $(oldrows).eq(rn);
+                            var oldcells = $(oldrow).children();
+
+                            newcells.each(function (cn, newcell) {
+
+                                var oldcell = $(oldcells).eq(cn);
+
+                                if ($(newcell).has("input")) {
+
+                                    var oldtxt = $(oldcell).find("input");
+                                    var newtxt = $(newcell).find("input");
+
+                                    if (oldtxt.val() !== newtxt.val()) {
+                                        $(newtxt).animate({ backgroundColor: "#EFE7DC" }, 2000)
+                                            .animate({ backgroundColor: "#fff" }, 2000);
+                                    }
+                                }
+                            });
+                        });
+                        RefreshPathOffList();
+                        break;
+                    case "SCHEDULECOMMENTS":
+                        $("#" + pv).html(result);
+                        RefreshComments();
+                        break;
+                    case "SCHEDULEISSUES":
+                        $("#" + pv).html(result);
+                        break;
+                    default:
+                }
+            });
+        }
+    </script>
+}
+
+@section Left
+{
+    @*<div style="padding-top:10px;padding-bottom:5px;font-weight:bold">Print Schedule</div>
+        <div style="display:flex;justify-content:center;align-items:center;width:100%;gap:5px;">
+            <button>Current</button>
+            <button>Multiple</button>
+            <button>Notify Couriers</button>
+        </div>*@
+    <div style="padding-top:25px;padding-bottom:5px;font-weight:bold">Filter</div>
+    <div style="display:flex;align-items:center;width:100%;padding-left:5px">
+        <span class="text7" style="padding-right:10px;">Week/Year</span>
+        <input id="weekpicker" />
+        <button id="weekprev"><</button>
+        <button id="weeknext">></button>
+    </div>
+    <table id="schedulefilter" style="width:100%">
+        <tr>
+            <td colspan="2" style="padding-top:25px;font-weight:bold">Selected Week</td>
+        </tr>
+        <tr>
+            <td class="text7" style="padding-left:5px;">Monday</td>
+            <td id="Monday" class="text2" style="padding-left:5px;">6/10/2024</td>
+        </tr>
+        <tr>
+            <td class="text7" style="padding-left:5px;">Sunday</td>
+            <td id="Sunday" class="text2" style="padding-left:5px;">6/16/2024</td>
+        </tr>
+    </table>
+    <div id="SCHEDULEISSUES">
+        @Html.Partial("ScheduleIssues", Model.Issues)
+    </div>
+
+}
+
+<div id="content">
+    <div id="SCHEDULEWEEK">
+        @Html.Partial("ScheduleWeek", Model)
+    </div>
+    <div style="display:flex;padding-top:20px;padding-left:25px">
+        <div style="padding-right:10px" id="SCHEDULEOFF">
+            @Html.Partial("ScheduleOff", Model.OffSchedule)
+        </div>
+        <div style="border-left: 2px solid black;"></div>
+        <div style="width:27.7%;padding-left:10px" id="SCHEDULECOMMENTS">
+            @Html.Partial("ScheduleComments", Model.Comments)
+        </div>
+    </div>
+</div>

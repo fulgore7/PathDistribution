@@ -1,0 +1,195 @@
+﻿@model PathDistribution.Models.PathData
+
+@{
+    ViewBag.Title = "Pathologist Distribution";
+}
+
+@section Left
+{
+    @using (Html.BeginForm("UpdateSchedule", "Home", FormMethod.Post, new { id = "UpdateSchedule" }))
+    {
+        <div class="scheduletab">
+            <div class="scheduletab-items" style="margin-top:4px;">
+                <div style="text-align:center">
+                    <button id="updateschedule" class="cartbutton" type="submit">Update Schedule</button>
+                </div>
+
+                <span id="dteDateAssigned" class="text7" style="padding-top:8px; text-align:center; display:inline-block; line-height:14px; vertical-align:top; width:111%;font-family:Arial">@Model.Settings.Distribution.ToString("MM/dd/yyyy")</span>
+                <span class="text7" style="padding-top:8px; text-align:center; display:inline-block; line-height:14px; vertical-align:top; width:111%;">PATH SCHEDULE</span>
+
+                @Html.Partial("PathAssign", Model.PathAssign)
+
+                @Html.Partial("OffPathAssign", Model.OffPathAssign)
+            </div>
+        </div>
+    }
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "GenerateData" }))
+{
+}
+
+@using (Html.BeginForm("MoveCases", "Home", FormMethod.Post, new { id = "MoveCart" }))
+{
+    @Html.Partial("Cart", Model.cases)
+}
+
+<div id="content">
+    <table style="width:100%;" cellspacing="0">
+        <tr>
+            <td colspan="13">
+                @*<button id="Generate" type="button" class="cartbutton">Generate</button>
+                <button id="btnBreakdown" type="button" class="cartbutton">Breakdown</button>
+                @{
+                    var mindate = Model.Settings.StartAccession.ToString("MM/dd/yyyy");
+                    var maxdate = Model.Settings.EndAccession.ToString("MM/dd/yyyy");
+                    var text = string.Empty;
+
+                    if (mindate == maxdate)
+                    {
+                        text = "Cases processed on " + mindate;
+                    }
+                    else
+                    {
+                        text = "Cases processed between " + mindate + " and " + maxdate;
+                    }
+                }
+                <span class="text7" style="font-family: Arial">@text</span>*@
+                <div class="text7" style="float:right">
+                    <a href="@Url.Action("Index", "Start")">
+                        <button type="button" class="cartbutton">Change Date</button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+
+        @{
+            var pathon = new PathDistribution.Models.PathBreakdown()
+            {
+                PathDistribution = Model.PathDistribution.Where(x => !x.IsOff && !x.IsConsultant).ToList(),
+                CaseDetails = Model.CaseDetails.Where(x => Model.PathDistribution.Where(i => !i.IsOff && !i.IsConsultant).Any(y => y.chrPath == x.chrPath)).ToList(),
+                IsOff = false,
+                Padding = false,
+                showMessage = PathDistribution.Models.showMessages.Nothing
+            };
+            var pathconsult = new PathDistribution.Models.PathBreakdown()
+            {
+                PathDistribution = Model.PathDistribution.Where(x => x.IsConsultant && !x.IsOff).ToList(),
+                CaseDetails = Model.CaseDetails.Where(x => Model.PathDistribution.Where(i => i.IsConsultant && !i.IsOff).Any(y => y.chrPath == x.chrPath)).ToList(),
+                IsOff = false,
+                Padding = true,
+                showMessage = PathDistribution.Models.showMessages.Consult
+            };
+            var pathoff = new PathDistribution.Models.PathBreakdown()
+            {
+                PathDistribution = Model.PathDistribution.Where(x => x.IsOff).ToList(),
+                CaseDetails = Model.CaseDetails.Where(x => Model.PathDistribution.Where(i => i.IsOff).Any(y => y.chrPath == x.chrPath)).ToList(),
+                IsOff = true,
+                Padding = true,
+                showMessage = PathDistribution.Models.showMessages.Off
+            };
+        }
+        @Html.Partial("PathBreakdown", pathon)
+        @Html.Partial("PathBreakdown", pathconsult)
+        @Html.Partial("PathBreakdown", pathoff)
+
+    </table>
+</div>
+
+<div class="cart-tab" style="right:11em">
+    <div class="cart-items" style="margin-top:4px;" id="moveslides">
+        <table>
+            @foreach (var item in Model.PathDistribution)
+            {
+                <tr data-content="@item.chrPath">
+                    @*<td class="text7" style="padding-left:4px;">@item.chrPath@item.Limits</td>*@
+                    <td style="padding-left:4px;"><span class="text7">@item.chrPath</span><span class="text10">@item.Limits</span></td>
+                    <td class="text5" style="text-align:right;padding-left:8px;">0</td>
+                    <td class="text5" style="text-align:right;padding-left:20px;">@item.TOTALSLIDES</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <span class="text5" style="padding-left:4px;">@Model.cases.MinAndMax.MinCount.ToString()/@Model.cases.MinAndMax.MaxCount.ToString()</span>
+    <button id="applycart" class="cartbutton" type="button" style="float:right;margin-right:15px;margin-bottom:5px;" disabled>Apply</button>
+</div>
+
+@using (Html.BeginForm("AddSlides", "Home", FormMethod.Post, new { id = "AddSlides" }))
+{
+    <div class="cart-tab" style="right:2em">
+        <div class="cart-items" style="margin-top:4px;" id="addslides">
+            <table>
+                @for (int i = 0; i < Model.AddedSlides.Count; i++)
+                {
+                    <tr data-content="@Model.AddedSlides[i].chrPath">
+                        <td class="text7" style="padding-left:4px;">@Model.AddedSlides[i].chrPath@Html.HiddenFor(x => Model.AddedSlides[i].chrPath)@Html.HiddenFor(x => Model.AddedSlides[i].dteDateAssigned)@Html.HiddenFor(x => Model.AddedSlides[i].chrComment)</td>
+                        <td class="text5" style="text-align:right;padding-left:8px;">@Html.TextBoxFor(x => Model.AddedSlides[i].intSlideCount, new { @type = "number", @style = "width:45px;text-align:right", onkeydown = "return ValidateNumber(event);", min = "0", max = @Model.cases.MinAndMax.MaxCount })</td>
+                    </tr>
+                }
+                @*@foreach (var item in Model.AddedSlides)
+                    {
+                        <tr data-content="@item.chrPath">
+                            <td class="text7" style="padding-left:4px;">@item.chrPath@Html.HiddenFor(x => item.chrPath)@Html.HiddenFor(x => item.dteDateAssigned)</td>
+                            <td class="text5" style="text-align:right;padding-left:8px;">@Html.TextBoxFor(x => item.intSlideCount, new { @type = "number", @style = "width:45px;text-align:right", onkeydown = "return ValidateNumber(event);" })</td>
+                        </tr>
+                    }*@
+            </table>
+        </div>
+        <span class="text5" style="padding-left:4px;"></span>
+        <button id="addslidecart" class="cartbutton" type="submit" style="float:right;margin-right:15px;margin-bottom:5px;">Apply</button>
+    </div>
+
+    <div id="myModalSlide" class="modal-dialog" role="dialog">
+        <span class="text7" style="font-size: 14px;font-weight:bold;">Please enter the reason?</span><br />
+        <textarea rows="4" cols="25" id="inputSlideComment" maxlength="255"></textarea>
+        <div style="float:right;margin-right:10px;margin-bottom:5px;margin-top:5px">
+            <button id="applyslidemodal" type="button" class="cartbutton">Apply</button>
+        </div>
+    </div>
+}
+
+@if (Model.DownloadPDF)
+{
+    @Html.ActionLink("Download PDF", "DownloadPDF", null, new { id = "PDF", target = "_blank", @style = "display:none" })
+}
+
+<div id="myModal" class="modal"></div>
+
+<div id="typeBreakdownDiv" class="modal-dialog3" role="dialog">
+    @{Html.RenderPartial("TypeBreakdown", Model.TypeBreakdowns);}
+</div>
+
+@section scripts {
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+                            @if (Model.DownloadPDF) {
+                @:$("#PDF")[0].click();
+                        }
+            @if (!string.IsNullOrEmpty(Model.InvalidSchedule)) {
+                @:alert('@Model.InvalidSchedule');
+            }
+        });
+
+        function ValidateNumber(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+
+            if (charCode < 8 || (charCode > 9 && charCode < 33) || (charCode > 40 && charCode < 46)  || (charCode > 57 && charCode < 96) || charCode > 105) {
+                return false;
+            }
+            if (e.target.value < 0)
+            {
+                e.target.value = @Model.cases.MinAndMax.MaxCount;
+                return false;
+            }
+            if (e.target.value > @Model.cases.MinAndMax.MaxCount)
+            {
+                e.target.value = @Model.cases.MinAndMax.MaxCount;
+                return false;
+            }
+
+            return true;
+        };
+
+    </script>
+}

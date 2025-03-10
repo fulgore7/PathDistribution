@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PathDistribution.Models.PathDistribution>
+
+<tr class="text5" style="text-align:left">
+    <td style="text-align:center;border-top: 1px solid black">@Model.Count()</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.PreAssignedSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.ComplexSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.SPDSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.PCDSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.PPD_SlidesSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.ClientSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.ClinicianSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.HEMESLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.SKINSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.GENERALSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.SDSLIDES)</td>
+    <td style="text-align:center;border-top: 1px solid black">@Model.Sum(x => x.TOTALSLIDES)</td>
+</tr>

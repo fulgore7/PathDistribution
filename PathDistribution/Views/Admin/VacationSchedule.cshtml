@@ -1,0 +1,737 @@
+﻿@using System.Web.Optimization
+@using PathDistribution.Helpers
+@model PathDistribution.Models.VacationSchedules
+
+@{
+    ViewBag.Title = "Vacation Schedule";
+    Layout = "~/Views/Shared/_LayoutSched.cshtml";
+    bool isAdmin = System.Web.HttpContext.Current.IsAdmin();
+    //get initials from the beginning
+}
+
+@section styles
+{
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/2")
+    <style type="text/css">
+        .green {
+            background-color: green;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .blue {
+            background-color: blue;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .red {
+            background-color: red;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .brown {
+            background-color: brown;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .orange {
+            background-color: orange;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .purple {
+            background-color: purple;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .pink {
+            background-color: pink;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .yellow {
+            background-color: yellow;
+            border: 1px solid rgb(160,160,255) !important;
+        }
+
+        .transparent {
+            background-color: transparent !important;
+            border-left: 1px solid rgb(160,160,255) !important;
+            border: none !important;
+        }
+
+        div.ui-multiselect-menu {
+            background-color: white;
+        }
+
+        ul.ui-multiselect-checkboxes li {
+            background-image: none;
+            padding: 0;
+        }
+
+        ul.ui-multiselect-single li {
+            background-image: none;
+            padding: 0;
+        }
+
+        ul.ui-helper-reset li {
+            background-image: none;
+            padding: 0;
+        }
+
+        label.ui-multiselect-filter-label {
+            font: 11px/14px arial;
+            color: #9e7b48;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+
+        div.ui-multiselect-filter {
+            padding-bottom: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        tbody::-webkit-scrollbar {
+            display: none;
+        }
+
+        .box {
+            height: 10px;
+            width: 10px;
+            display: inline-block;
+            margin: 0 5px 0 5px;
+        }
+
+        .ui-widget-content {
+            border: 1px solid #dddddd;
+            background: #ffffff;
+            color: #333333;
+        }
+
+        th.ui-datepicker-week-end,
+        td.ui-datepicker-week-end {
+            display: none;
+        }
+
+        .disabled {
+            -webkit-filter: saturate(0%);
+            filter: saturate(0%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .divTable {
+            display: table;
+        }
+
+        .divTableRow {
+            display: table-row;
+        }
+
+        .divTableHeading {
+            background-color: #B3C8DF;
+            display: table-header-group;
+            font-weight: bold;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .divTableCell, .divTableHead {
+            display: table-cell;
+        }
+
+        .divTableBody {
+            display: table-row-group;
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 665px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .COLONE {
+            min-width: 40px;
+            width:40px;
+            text-align:center;
+        }
+        .COLTWO {
+            min-width: 115px;
+            width: 115px;
+            padding-right: 5px;
+        }
+        .COLALL {
+            min-width: 53px;
+            width: 53px;
+            border-left: 1px solid rgb(160,160,255);
+        }
+        .WeekDay {
+            text-align:right;
+        }
+        .divTableBody div.divTableRow:hover {
+            box-shadow: 0 0 17px gray;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/e")
+<script type="text/javascript" language="javascript">
+
+    $(function () {
+        $("#weekpickerstart").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            firstDay: 1,
+            minDate: $("#weekpickerstart").data("min"),
+            maxDate: $("#weekpickerstart").data("max"),
+            yearRange: (new Date($("#weekpickerstart").data("min")).getFullYear()).toString() + ":" + (new Date($("#weekpickerstart").data("max")).getFullYear()).toString(),
+            onSelect: function (dateText, inst) {
+                $("#content").addClass("disabled");
+                var map = {};
+                map["dteStart"] = new Date(dateText);
+                map["dteEnd"] = new Date($("#weekpickerend").val());
+
+                $.ajax({
+                    url: '@Url.Action("RefreshVacationScheduleCal", "Admin")',
+                    dataType: "html",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(map),
+                    async: true,
+                    processData: false,
+                    cache: false
+                }).done(function (result) {
+                    $("#content").html(result)
+                    var off = $("#OffTypeFilter").multiselect("getLabels").find("input");
+                    $.each(off, function (i, cb) {
+                        $("#offassignments div[data-off='" + cb.value + "']").toggleClass("hidden", !cb.checked);
+                    });
+                    var path = $("#PathFilter").multiselect("getLabels").find("input");
+                    $.each(path, function (i, cb) {
+                        $("#offassignments data-path[data-path='" + cb.value + "']").toggleClass("hidden", !cb.checked);
+                    });
+                    $("#content").removeClass("disabled");
+                });
+            }
+        }).val("1/1/" + new Date().getFullYear().toString() + "");
+
+        $("#weekpickerend").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            firstDay: 1,
+            minDate: $("#weekpickerend").data("min"),
+            maxDate: $("#weekpickerend").data("max"),
+            yearRange: (new Date($("#weekpickerstart").data("min")).getFullYear()).toString() + ":" + (new Date($("#weekpickerstart").data("max")).getFullYear()).toString(),
+            onSelect: function (dateText, inst) {
+                $("#content").addClass("disabled");
+                var map = {};
+                map["dteStart"] = new Date($("#weekpickerstart").val());
+                map["dteEnd"] = new Date(dateText);
+
+                $.ajax({
+                    url: '@Url.Action("RefreshVacationScheduleCal", "Admin")',
+                    dataType: "html",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(map),
+                    async: true,
+                    processData: false,
+                    cache: false
+                }).done(function (result) {
+                    $("#content").html(result)
+                    var off = $("#OffTypeFilter").multiselect("getLabels").find("input");
+                    $.each(off, function (i, cb) {
+                        $("#offassignments div[data-off='" + cb.value + "']").toggleClass("hidden", !cb.checked);
+                    });
+                    var path = $("#PathFilter").multiselect("getLabels").find("input");
+                    $.each(path, function (i, cb) {
+                        $("#offassignments div[data-path='" + cb.value + "']").toggleClass("hidden", !cb.checked);
+                    });
+                    $("#content").removeClass("disabled");
+                });
+            }
+        }).val("12/31/" + new Date().getFullYear().toString() + "");
+
+        $("#OffTypeFilter").multiselect({
+            buttonWidth: "160px",
+            selectedText: "",
+            noneSelectedText: "",
+            header: false,
+            click: function (e, ui) {
+                $("#offassignments div[data-off='" + ui.value + "']").toggleClass("transparent", !ui.checked);
+                //$("#offassignments div[data-off='" + ui.value + "']").prop("title", ui.checked ? ui.value : "");
+            },
+        });
+
+        $("#PathFilter").multiselect({
+            buttonWidth: "160px",
+            selectedText: "",
+            noneSelectedText: "",
+            header: ['checkAll', 'uncheckAll'],
+            linkInfo: {
+                checkAll: { text: "All" },
+                uncheckAll: { text: "None" }
+            },
+            click: function (e, ui) {
+                $("#offassignments div[data-path='" + ui.value + "']").toggleClass("hidden", !ui.checked);
+            },
+            checkAll: function () {
+                var cbs = $(this).multiselect("getLabels").find("input");
+                $.each(cbs, function (i, cb) {
+                    $("#offassignments div[data-path='" + cb.value + "']").toggleClass("hidden", false);
+                });
+            },
+            uncheckAll: function () {
+                var cbs = $(this).multiselect("getLabels").find("input");
+                $.each(cbs, function (i, cb) {
+                    $("#offassignments div[data-path='" + cb.value + "']").toggleClass("hidden", true);
+                });
+            }
+        }).multiselectfilter({
+            width: "100px",
+            placeholder: ""
+        });
+
+        $("li.ui-multiselect-close").remove();
+
+        $(".divTableBody").scrollTop($('.divTableBody .today').offset().top - $(".divTableBody").offset().top);
+
+        var dialog = $("#ptoModal").dialog({
+            autoOpen: false,
+            height: 300,
+            width: 350,
+            modal: true,
+            resizable: false,
+            draggable: false,
+            buttons: {
+                "Close": function () {
+                    dialog.dialog("close");
+                },
+                "Apply": function () {
+                    var valid = true;
+
+                    $("#StartDate").next("span").remove();
+                    $("#EndDate").next("span").remove();
+                    $("#offType").next("span").remove();
+                    $("#ptoReason").next("span").remove();
+
+                    if (!$("#StartDate").val()
+                        || ($("#StartDate").val() > $("#EndDate").val() && !$("#EndDate").val())) {
+                        $("#StartDate").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                        setTimeout(function () {
+                            $("#StartDate").removeClass("ui-state-error", 1500);
+                        }, 500);
+                        valid = false;
+                    }
+                    if (!$("#EndDate").val()
+                        || ($("#StartDate").val() < $("#EndDate").val() && !$("#StartDate").val())) {
+                        $("#EndDate").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                        setTimeout(function () {
+                            $("#EndDate").removeClass("ui-state-error", 1500);
+                        }, 500);
+                        valid = false;
+                    }
+                    if (!$("#offType").val()) {
+                        $("#offType").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                        setTimeout(function () {
+                            $("#offType").removeClass("ui-state-error", 1500);
+                        }, 500);
+                        valid = false;
+                    }
+                    if (!$("#ptoReason").val()) {
+                        $("#ptoReason").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                        setTimeout(function () {
+                            $("#ptoReason").removeClass("ui-state-error", 1500);
+                        }, 500);
+                        valid = false;
+                    }
+                    if (valid) {
+                        var data = {};
+                        data["pkPTO"] = $("#pkPTO").val();
+                        data["chrPath"] = $("#chrPath").val();
+                        data["dteStart"] = $("#StartDate").val();
+                        data["dteEnd"] = $("#EndDate").val();
+                        data["intStatus"] = 0;
+                        data["chrAbbr"] = $("#offType").val();
+                        data["chrStatusChangedBy"] = "@System.Web.HttpContext.Current.User.Identity.Name";
+                        data["dteStatusChanged"] = (new Date()).toLocaleString().replace(",","");
+                        data["chrComments"] = $("#ptoReason").val();
+
+                        $.ajax({
+                            url: '@Url.Action("UpsertPTO", "Admin")',
+                            dataType: "json",
+                            type: "POST",
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify(data),
+                            async: true,
+                            processData: false,
+                            cache: false
+                        }).done(function (result) {
+                            if (result.Status == "Success") {
+
+                                var tr = $('tr[data-id="' + data["pkPTO"] + '"]');
+
+                                tr.data('p',$("#chrPath").val());
+                                tr.data('sdate',$("#StartDate").val());
+                                tr.data('edate',$("#EndDate").val());
+                                tr.data('ot',$("#offType").val());
+                                tr.data('comment', $("#ptoReason").val());
+
+                                tr.attr('data-p', $("#chrPath").val());
+                                tr.attr('data-sdate', $("#StartDate").val());
+                                tr.attr('data-edate', $("#EndDate").val());
+                                tr.attr('data-ot', $("#offType").val());
+                                tr.attr('data-comment', $("#ptoReason").val());
+
+                                var txt = $("#chrPath").val()
+                                    + ": "
+                                    + (new Date($("#StartDate").val())).toLocaleDateString('en-US').replace(",", "")
+                                    + "-"
+                                    + (new Date($("#EndDate").val())).toLocaleDateString('en-US').replace(",", "")
+                                    + ' (' + $("#offType").val() + ")";
+
+                                $('tr[data-id="' + data["pkPTO"] + '"] td:nth-child(2)').text = txt;
+
+                                $("div.divTableCell[data-path='" + data["chrPath"] + "']").filter(function () {
+                                    var a = new Date(data["dteStart"]);
+                                    var b = new Date(data["dteEnd"]);
+                                    var c = new Date($(this).data("dt"));
+                                    return c >= a && c <= b;
+                                }).each(function () {
+                                    var title = $(this).attr("title").split(/\s*\/\s*/);
+                                    let index = title.index(data["chrAbbr"]);
+                                    if (index > -1) {
+                                        title.splice(index, 1);
+                                    }
+                                    var strtitle = title.map(item => $.trim(item)).join(" / ");
+                                    var bgcolor = title.map(item => {
+                                        switch ($.trim(item)) {
+                                            case "OFF":
+                                                return "green";
+                                                break;
+                                            case "CME":
+                                                return "purple";
+                                                break;
+                                            case "PEND":
+                                                return "yellow";
+                                                break;
+                                            default:
+                                                return "";
+                                        }
+                                    });
+                                    bgcolor = bgcolor.Contains("/") ? "yellow" : bgcolor;
+                                    var off = bgcolor.Equals("yellow") ? "PEND" : strtitle;
+
+                                    $(this).data("off", off);
+                                    $(this).attr("title", strtitle);
+                                    $(this).attr("data-off", off);
+                                    $(this).removeClass("yellow").addClass(bgcolor);
+                                });
+
+                                dialog.dialog("close");
+                            }
+                            else {
+                                alert("Oops");
+                            }
+                        });
+                    }
+                    return valid;
+                }
+            },
+            close: function () {
+                ResetPTO();
+            }
+        });
+
+        $("#ptoRequest").on("click", function () {
+            ResetPTO();
+            dialog.dialog("open");
+        });
+
+        $(".PTOApprove").on("click", function () {
+            if (confirm("Are you sure you want to confirm this PTO request?")) {
+                var tr = $(this).closest("tr");
+                var data = {};
+                data["intStatus"] = 1;
+                data["pkPTO"] = tr.data('id');
+                data["chrPath"] = tr.data('p');
+                data["dteStart"] = tr.data('sdate');
+                data["dteEnd"] = tr.data('edate');
+                data["chrAbbr"] = tr.data('ot');
+                data["chrStatusChangedBy"] = "@System.Web.HttpContext.Current.User.Identity.Name";
+                data["dteStatusChanged"] = (new Date()).toLocaleString().replace(",","");
+                data["chrComments"] = tr.data('comment');
+
+                $.ajax({
+                    url: '@Url.Action("UpsertPTO", "Admin")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                    async: true,
+                    processData: false,
+                    cache: false
+                }).done(function (result) {
+                    if (result.Status == "Success") {
+                        $('tr[data-id="' + data["pkPTO"] + '"]').remove();
+
+                        $("div.divTableCell[data-path='" + data["chrPath"] + "']").filter(function () {
+                            var a = new Date(data["dteStart"]);
+                            var b = new Date(data["dteEnd"]);
+                            var c = new Date($(this).data("dt"));
+                            return c >= a && c <= b;
+                        }).each(function () {
+                            var title = $(this).attr("title").split(/\s*\/\s*/);
+                            let index = title.index("PEND");
+                            if (index > -1) {
+                                title.splice(index, 1);
+                            }
+                            var strtitle = title.map(item => $.trim(item)).join(" / ");
+                            var bgcolor = title.map(item => {
+                                switch ($.trim(item)) {
+                                    case "OFF":
+                                        return "green";
+                                        break;
+                                    case "CME":
+                                        return "purple";
+                                        break;
+                                    case "PEND":
+                                        return "yellow";
+                                        break;
+                                    default:
+                                        return "";
+                                }
+                            });
+                            bgcolor = bgcolor.Contains("/") ? "yellow" : bgcolor;
+                            var off = bgcolor.Equals("yellow") ? "PEND" : strtitle;
+
+                            $(this).data("off", off);
+                            $(this).attr("title", strtitle);
+                            $(this).attr("data-off", off);
+                            $(this).removeClass("yellow").addClass(bgcolor);
+                        });
+                    }
+                    else {
+                        alert("Oops");
+                    }
+                });
+            }
+        });
+
+        $(".PTOReject").on("click", function () {
+            if (confirm("Are you sure you wish to cancel this PTO Request.")) {
+                var tr = $(this).closest("tr");
+                var data = {};
+                data["intStatus"] = 2;
+                data["pkPTO"] = tr.data('id');
+                data["chrPath"] = tr.data('p');
+                data["dteStart"] = tr.data('sdate');
+                data["dteEnd"] = tr.data('edate');
+                data["chrAbbr"] = tr.data('ot');
+                data["chrStatusChangedBy"] = "@System.Web.HttpContext.Current.User.Identity.Name";
+                data["dteStatusChanged"] = (new Date()).toLocaleString().replace(",","");
+                data["chrComments"] = tr.data('comment');
+
+                $.ajax({
+                    url: '@Url.Action("UpsertPTO", "Admin")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                    async: true,
+                    processData: false,
+                    cache: false
+                }).done(function (result) {
+                    if (result.Status == "Success") {
+                        $('tr[data-id="' + data["pkPTO"] + '"]').remove();
+
+                        $("div.divTableCell[data-path='" + data["chrPath"] + "']").filter(function () {
+                            var a = new Date(data["dteStart"]);
+                            var b = new Date(data["dteEnd"]);
+                            var c = new Date($(this).data("dt"));
+                            return c >= a && c <= b;
+                        }).each(function () {
+
+                            var title = $(this).attr("title").split(/\s*\/\s*/);
+                            let index = title.index(data["chrAbbr"]);
+                            if (index > -1) {
+                                title.splice(index, 1);
+                            }
+                            var strtitle = title.map(item => $.trim(item)).join(" / ");
+                            var bgcolor = title.map(item => {
+                                switch ($.trim(item)) {
+                                    case "OFF":
+                                        return "green";
+                                        break;
+                                    case "CME":
+                                        return "purple";
+                                        break;
+                                    case "PEND":
+                                        return "yellow";
+                                        break;
+                                    default:
+                                        return "";
+                                }
+                            });
+                            bgcolor = bgcolor.Contains("/") ? "yellow" : bgcolor;
+                            var off = bgcolor.Equals("yellow") ? "PEND" : strtitle;
+
+                            $(this).data("off", off);
+                            $(this).attr("title", strtitle);
+                            $(this).attr("data-off", off);
+                            $(this).removeClass("yellow").addClass(bgcolor);
+                        });
+                    }
+                    else {
+                        alert("Oops");
+                    }
+                });
+            }
+        });
+
+        $(".PTOEdit").on("click", function () {
+            ResetPTO();
+            var tr = $(this).closest("tr");
+            $("#pkPTO").val(tr.data('id'));
+            $("#chrPath").val(tr.data('p'));
+            $("#intStatus").val("0");
+            $("#StartDate").val(tr.data('sdate'));
+            $("#EndDate").val(tr.data('edate'));
+            $("#offType").val(tr.data('ot'));
+            $("#ptoReason").val(tr.data('comment'));
+            dialog.dialog("open");
+        });
+    });
+
+    function ResetPTO() {
+        $("#chrPath").val('@System.Web.HttpContext.Current.CopathAbbr()');
+        $("#StartDate").val('');
+        $("#EndDate").val('');
+        $("#offType").val('');
+        $("#ptoReason").val('');
+
+        $("#StartDate span").remove();
+        $("#EndDate span").remove();
+        $("#ptoReason span").remove();
+
+        var from = $("#StartDate").datepicker({
+            minDate: 0,
+            defaultDate: "+1w",
+            showWeek: true,
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            firstDay: 1,
+        }).on("change", function () {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
+            to = $("#EndDate").datepicker({
+                minDate: 0,
+                defaultDate: "+1w",
+                showWeek: true,
+                changeMonth: true,
+                changeYear: true,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                firstDay: 1,
+            }).on("change", function () {
+                from.datepicker("option", "maxDate", getDate(this));
+            });
+    }
+
+    function getDate(element) {
+        var date;
+        try {
+            date = $.datepicker.parseDate("mm/dd/yy", element.value);
+        } catch (error) {
+            date = null;
+        }
+
+        return date;
+    }
+</script>
+}
+
+@section Left
+{
+    <table id="schedulefilter" style="width:95%">
+        <tr>
+            <td colspan="2" style="padding-bottom:25px;text-align:center">
+                <button id="ptoRequest">Request PTO</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="font-weight:bold">Filter</td>
+        </tr>
+        <tr>
+            <td class="text7">Start Date</td>
+            <td><input id="weekpickerstart" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+        </tr>
+        <tr>
+            <td class="text7">End Date</td>
+            <td><input id="weekpickerend" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+        </tr>
+        <tr>
+            <td class="text7">Path</td>
+            <td>@Html.DropDownList("PathFilter", Model.Paths.Select(x => new SelectListItem() { Value = x, Text = x, Selected = true }), new { @id = "PathFilter", multiple = "true" })</td>
+        </tr>
+        <tr>
+            <td class="text7">Off Type</td>
+            <td>
+                <select id="OffTypeFilter" multiple="multiple" name="OffTypeFilter">
+                    @foreach (var offtype in Model.Assignments)
+                    {
+                        <option selected="selected" value="@offtype.Item1" data-color-class="@offtype.Item2">@offtype.Item1</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @foreach (var offtype in Model.Assignments)
+                {
+                    <span><div class="box @offtype.Item2"></div>@offtype.Item1<br /></span>
+                }
+            </td>
+        </tr>
+        @if (Model.PTORequests.Any())
+        {
+            <tr>
+                <td colspan="2" style="font-weight:bold">PTO Requests</td>
+            </tr>
+            foreach (var request in Model.PTORequests)
+            {
+                <tr data-id="@request.pkPTO" data-p="@request.chrPath" data-sdate="@request.dteStart.ToShortDateString()" data-edate="@request.dteEnd.ToShortDateString()" data-ot="@request.chrAbbr" data-comment="@request.chrComments">
+                    <td style="text-align:right;">
+                        @if (isAdmin)
+                        {
+                            <button type="button" class="PTOApprove" style="cursor: pointer; border: none;padding:0px;"><i class="fa fa-check-circle" style="color: green;"></i></button>
+                        }
+                        <button type="button" class="PTOEdit" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-edit" style="color: #8C6B3D;"></i></button>
+                        @if (isAdmin)
+                        {
+                            <button type="button" class="PTOReject" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-times-circle" style="color: red;"></i></button>
+                        }
+                    </td>
+                    <td class="text5">@request.chrPath: @request.dteStart.ToString("M/d/yy")-@request.dteEnd.ToString("M/d/yy") (@request.chrAbbr)</td>
+                </tr>
+            }
+        }
+    </table>
+}
+
+<div id="content">
+    @Html.Partial("VacationScheduleCal", Model)
+</div>
+
+@Html.Partial("PTO", Model.Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())
