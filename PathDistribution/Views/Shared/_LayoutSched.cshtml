@@ -38,79 +38,109 @@
                 opacity: 1.0;
             }
         }
+        .sectionleft {
+            width: fit-content;
+            background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
+        }
+
+        .sectionright {
+            width: fit-content;
+            background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
+            padding-left: 10px;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <img src="~/Content/img/logo.gif" alt="sarapath" width="225" height="116" />
-        <span class="AppTitle">Pathologist Schedule</span>
-        <div class="navmenu">
-            <nav>
-                <ul>
-                    <li class="PTOClass" id="ptoClass">@Html.ActionLink("PTO Requested", "VacationSchedule", "Admin", new { @style = "color:red" })</li>
-                    <li>@Html.ActionLink("Schedule", "Schedule", "Admin")</li>
-                    <li>
-                        <a>Pathologists</a>
-                        <ul>
-                            @if (isAdmin)
-                            {
-                                <li>@Html.ActionLink("Paths", "Pathologists", "Admin")</li>
-                                <li>@Html.ActionLink("Eligibility", "Eligibility", "Admin")</li>
-                            }
-                            <li>@Html.ActionLink("Vacation Balance", "VacationBalances", "Admin")</li>
-                            <li>@Html.ActionLink("Vacation Schedule", "VacationSchedule", "Admin")</li>
-                        </ul>
-                    </li>
-                    @if (isAdmin)
-                    {
-                        <li>
-                            <a>Admin</a>
-                            <ul>
-                                <li>@Html.ActionLink("Activities", "Assignments", "Admin")</li>
-                                <li>@Html.ActionLink("Activity Conflicts", "AssignmentConflicts", "Admin")</li>
-                                <li>@Html.ActionLink("Canned Comments", "CannedComments", "Admin")</li>
+    <div class="container-fluid">
+        <div class="row">
+            <header>
+                <img src="~/Content/img/logo.gif" alt="sarapath" width="225" height="116" />
+                <span class="AppTitle">Pathologist Schedule</span>
+                <div class="navmenu">
+                    <nav class="navbar-expand-md">
+                        <button class="navbar-toggler" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav nav ms-auto">
+                                <li class="PTOClass nav-item" id="ptoClass">@Html.ActionLink("PTO Requested", "VacationSchedule", "Admin", new { @style = "color:red" })</li>
+                                <li class="nav-link">@Html.ActionLink("Schedule", "Schedule", "Admin")</li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#"
+                                       role="button" data-bs-toggle="dropdown"
+                                       aria-expanded="false">Pathologists</a>
+                                    <ul class="dropdown-menu">
+                                        @if (isAdmin)
+                                        {
+                                            <li>@Html.ActionLink("Paths", "Pathologists", "Admin", new { @class = "dropdown-item" })</li>
+                                            <li>@Html.ActionLink("Eligibility", "Eligibility", "Admin", new { @class = "dropdown-item" })</li>
+                                        }
+                                        <li>@Html.ActionLink("Vacation Balance", "VacationBalances", "Admin", new { @class = "dropdown-item" })</li>
+                                        <li>@Html.ActionLink("Vacation Schedule", "VacationSchedule", "Admin", new { @class = "dropdown-item" })</li>
+                                    </ul>
+                                </li>
+                                @if (isAdmin)
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#"
+                                           role="button" data-bs-toggle="dropdown"
+                                           aria-expanded="false">Admin</a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Activities", "Assignments", "Admin", new { @class = "dropdown-item" })</li>
+                                            <li>@Html.ActionLink("Activity Conflicts", "AssignmentConflicts", "Admin", new { @class = "dropdown-item" })</li>
+                                            <li>@Html.ActionLink("Canned Comments", "CannedComments", "Admin", new { @class = "dropdown-item" })</li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#"
+                                       role="button" data-bs-toggle="dropdown"
+                                       aria-expanded="false">Reports</a>
+                                    <ul class="dropdown-menu">
+                                        @if (isAdmin)
+                                        {
+                                            <li>@Html.ActionLink("Assignment Totals", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.AssignmentTotals }, null)</li>
+                                            <li>@Html.ActionLink("Weekend Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WeekendCallSched }, null)</li>
+                                            <li>@Html.ActionLink("Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.CallSched }, null)</li>
+                                        }
+                                        <li>@Html.ActionLink("Work Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WorkSched, @class = "dropdown-item" }, null)</li>
+                                        <li>@Html.ActionLink("Path Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.PathSched, @class = "dropdown-item" }, null)</li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    }
-                    <li>
-                        <a>Reports</a>
-                        <ul>
-                            @if (isAdmin)
-                            {
-                                <li>@Html.ActionLink("Assignment Totals", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.AssignmentTotals }, null)</li>
-                                <li>@Html.ActionLink("Weekend Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WeekendCallSched }, null)</li>
-                                <li>@Html.ActionLink("Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.CallSched }, null)</li>
-                            }
-                            <li>@Html.ActionLink("Work Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WorkSched }, null)</li>
-                            <li>@Html.ActionLink("Path Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.PathSched }, null)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+                        </div>
+                    </nav>
+                </div>
+            </header>
         </div>
-    </header>
-    <main>
-        <section class="sectionleft">
-            <div class="title">@ViewBag.Title</div>
-            <div class="scheduletab">
-                <div class="scheduletab-items" style="margin-top:4px;">
-                    @RenderSection("Left", false)
+        <div class="row">
+            @*<main>*@
+            <div class="col-2 sectionleft">
+                <div class="title">@ViewBag.Title</div>
+                <div class="scheduletab">
+                    <div class="scheduletab-items" style="margin-top:4px;">
+                        @RenderSection("Left", false)
+                    </div>
                 </div>
             </div>
-        </section>
-        <section class="sectionright">
-            @RenderBody()
-        </section>
-    </main>
-    <footer>
-        <div>
-            Copyright &copy; @DateTime.Now.Year SaraPath Diagnostics&reg;<br />
-            SaraPath Diagnostics&reg;, 2001 Webber St. Sarasota, FL 34239
+            <div class="col-10 sectionright">
+                    @RenderBody()
+              </div>
+            @* </main>*@
         </div>
-    </footer>
-    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/a")
-    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/b")
-    <script type="text/javascript" language="javascript">
+        <footer>
+            <div>
+                Copyright &copy; @DateTime.Now.Year SaraPath Diagnostics&reg;<br />
+                SaraPath Diagnostics&reg;, 2001 Webber St. Sarasota, FL 34239
+            </div>
+        </footer>
+        @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/a")
+        @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/b")
+        <script type="text/javascript" language="javascript">
 
     var bool = true;
     //timeout function here to set visibility of pto pending
@@ -145,8 +175,10 @@
              }
         });
 }
-    </script>
-    @RenderSection("scripts", false)
+        </script>
+        @RenderSection("scripts", false)
+    </div>
 </body>
+
 </html>
 

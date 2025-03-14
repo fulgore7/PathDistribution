@@ -7,12 +7,24 @@
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\shared\\_layoutsched.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\admin\\scheduleweek.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\scheduleweek.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\admin\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\admin\\pathologists.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\pathologists.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\content\\css\\screenadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\content\\css\\screenadmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\content\\css\\screen.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\content\\css\\screen.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\models\\schedule\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -48,7 +60,7 @@
               "RelativeDocumentMoniker": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
               "RelativeToolTip": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAGUAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAHYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-05T17:14:27.931Z",
               "EditorCaption": ""
@@ -56,32 +68,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ScheduleWeek.cshtml",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\ScheduleWeek.cshtml",
+              "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\ScheduleWeek.cshtml",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\ScheduleWeek.cshtml",
+              "RelativeToolTip": "PathDistribution\\Views\\Admin\\ScheduleWeek.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-12T18:05:37.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "screen.css",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Content\\css\\screen.css",
+              "RelativeDocumentMoniker": "PathDistribution\\Content\\css\\screen.css",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Content\\css\\screen.css",
+              "RelativeToolTip": "PathDistribution\\Content\\css\\screen.css",
+              "ViewState": "AgIAAH8EAAAAAAAAAAAcwIYEAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-12T15:43:35.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "screenAdmin.css",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Content\\css\\screenAdmin.css",
+              "RelativeDocumentMoniker": "PathDistribution\\Content\\css\\screenAdmin.css",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Content\\css\\screenAdmin.css",
+              "RelativeToolTip": "PathDistribution\\Content\\css\\screenAdmin.css",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-11T19:15:19.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Schedule.cshtml",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\Schedule.cshtml",
               "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\Schedule.cshtml",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\Schedule.cshtml",
               "RelativeToolTip": "PathDistribution\\Views\\Admin\\Schedule.cshtml",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAAAOsAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAFgCAAAAAAAAAAAAAHcCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T15:25:14.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T15:25:14.704Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Pathologists.cshtml",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\Pathologists.cshtml",
               "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\Pathologists.cshtml",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\Pathologists.cshtml",
               "RelativeToolTip": "PathDistribution\\Views\\Admin\\Pathologists.cshtml",
-              "ViewState": "AgIAALQAAAAAAAAAAAAAADABAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAAADABAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-04T17:21:43.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-04T17:21:43.728Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AdminDAL.cs",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Models\\Schedule\\AdminDAL.cs",
               "RelativeDocumentMoniker": "PathDistribution\\Models\\Schedule\\AdminDAL.cs",
@@ -89,8 +135,7 @@
               "RelativeToolTip": "PathDistribution\\Models\\Schedule\\AdminDAL.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAwwEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T17:27:22.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T17:27:22.937Z"
             }
           ]
         }

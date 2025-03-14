@@ -1,15 +1,12 @@
 ﻿body {
-    min-height: 98vh;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
     min-height: 116px;
     background-image: url('/Content/img/headerbg3.jpg');
     background-size: cover;
-    display: flex;
-}
+/*    display: flex;
+*/}
 
 span.AppTitle {
     font-size: 26pt;
@@ -28,13 +25,13 @@ div.navmenu {
 }
 
 main {
-    display: flex;
+/*    display: flex;
     width: 100%;
     flex: 1;
-}
+*/}
 
 section.sectionleft {
-    width: 15%;
+    width: fit-content;
     background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
 }
 
@@ -48,7 +45,7 @@ div.title {
 }
 
 section.sectionright {
-    width: 85%;
+    width: fit-content;
     background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
     padding-left: 10px;
 }
@@ -134,14 +131,14 @@ nav ul {
 }
     /* FIRST LEVEL MENU */
     nav ul li {
-        display: inline-block;
+/*        display: inline-block;
         position: relative;
-    }
+*/    }
 
         nav ul li a {
-            display: block;
+/*            display: block;
             padding: 8px 10px;
-            transition: background-color 0.3s;
+*/            transition: background-color 0.3s;
             text-decoration: none;
             color: #466b95;
             font-size: 12pt;
@@ -169,14 +166,14 @@ nav ul {
         }
 
         nav ul li ul li {
-            display: block;
-            white-space: nowrap;
+/*            display: block;
+*/            white-space: nowrap;
         }
 
             nav ul li ul li a {
-                display: block;
+/*                display: block;
                 padding: 10px 10px;
-                text-decoration: none;
+*/                text-decoration: none;
                 transition: background-color 0.3s;
                 color: #466b95;
                 font-size: 11pt;
