@@ -20,7 +20,7 @@ namespace PathDistribution.Controllers
         {
             AdminDAL adminDAL = new AdminDAL();
 
-            return PartialView("VacationScheduleCal",adminDAL.GetVacationSchedules(dteStart, dteEnd));
+            return PartialView("VacationScheduleCal2",adminDAL.GetVacationSchedules(dteStart, dteEnd).PathScheduleData);
         }
     }
 }

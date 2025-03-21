@@ -1,0 +1,47 @@
+﻿@model List<PathDistribution.Models.PathScheduleData>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="calendar">
+                <h1>Wow ! That calendar works !</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" language="javascript">
+    var modelData = @Html.Raw(Json.Encode(Model));
+
+    // Initialize the events array
+    var events = [];
+
+    // Loop through each item in the model data
+    modelData.forEach(function (item) {
+        events.push({
+            start: moment(item.dte).format('X'), // Adjust the property names as needed
+            end: moment(item.).format('X'),     // Adjust the property names as needed
+            title: item.Title,                        // Adjust the property names as needed
+            content: item.Content,                    // Adjust the property names as needed
+            category: item.Category                   // Adjust the property names as needed
+        });
+    });
+
+
+    var element = document.getElementById('calendar');
+    element.events: [
+        {
+            start: now.startOf('week').add(9, 'h').format('X'),
+            end: now.startOf('week').add(10, 'h').format('X'),
+            title: '1',
+            content: 'Hello World! <br> <p>Foo Bar</p>',
+            category: 'Professionnal'
+        },
+        {
+            title: 'Long Event',
+            start: '2023-10-07',
+            end: '2023-10-10'
+        }
+    ]
+    };
+
+</script>

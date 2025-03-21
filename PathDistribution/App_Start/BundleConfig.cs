@@ -35,9 +35,9 @@ namespace PathDistribution
                             .Include("~/Scripts/General.js"));
 
             bundles.Add(new StyleBundle("~/bundles/bs")
-                .Include("~/Content/bootstrap.min.css")
+                .Include("~/Content/bootstrap.css")
                 .Include("~/Content/themes/base/jquery-ui.css")
-                .Include("~/Scripts/bootstrap.js"));
+                .Include("~/Content/css/jquery-calendar.min.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

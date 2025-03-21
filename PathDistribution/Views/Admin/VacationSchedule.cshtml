@@ -12,6 +12,7 @@
 @section styles
 {
     @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/2")
+
     <style type="text/css">
         .green {
             background-color: green;
@@ -121,6 +122,7 @@
             opacity: 0.6;
             pointer-events: none;
         }
+
         .divTable {
             display: table;
         }
@@ -150,24 +152,29 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
         .COLONE {
             min-width: 40px;
-            width:40px;
-            text-align:center;
+            width: 40px;
+            text-align: center;
         }
+
         .COLTWO {
             min-width: 115px;
             width: 115px;
             padding-right: 5px;
         }
+
         .COLALL {
             min-width: 53px;
             width: 53px;
             border-left: 1px solid rgb(160,160,255);
         }
+
         .WeekDay {
-            text-align:right;
+            text-align: right;
         }
+
         .divTableBody div.divTableRow:hover {
             box-shadow: 0 0 17px gray;
             position: relative;
@@ -179,7 +186,9 @@
 @section scripts
 {
     @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/e")
-<script type="text/javascript" language="javascript">
+<script src="~/Scripts/jquery-calendar.min.js"></script>
+<script src="~/Scripts/moment-with-locales.js"></script>
+    <script type="text/javascript" language="javascript">
 
     $(function () {
         $("#weekpickerstart").datepicker({
@@ -302,7 +311,7 @@
 
         $("li.ui-multiselect-close").remove();
 
-        $(".divTableBody").scrollTop($('.divTableBody .today').offset().top - $(".divTableBody").offset().top);
+        //$(".divTableBody").scrollTop($('.divTableBody .today').offset().top - $(".divTableBody").offset().top);
 
         var dialog = $("#ptoModal").dialog({
             autoOpen: false,
@@ -648,90 +657,181 @@
             });
     }
 
-    function getDate(element) {
-        var date;
-        try {
-            date = $.datepicker.parseDate("mm/dd/yy", element.value);
-        } catch (error) {
-            date = null;
-        }
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate("mm/dd/yy", element.value);
+            } catch (error) {
+                date = null;
+            }
 
-        return date;
-    }
-</script>
+            return date;
+        }
+        /*
+        Calendar Section
+        */ 
+        $(document).ready(function () {
+            moment.locale('en');
+            var now = moment();
+            var events = [
+                {
+                    start: now.startOf('week').add(9, 'h').format('X'),
+                    end: now.startOf('week').add(10, 'h').format('X'),
+                    title: '1',
+                    content: 'Hello World! <br> <p>Foo Bar</p>',
+                    category: 'Professionnal'
+                },
+            ];
+            /**
+            * A daynote
+            */
+            var daynotes = [
+                {
+                    time: now.startOf('week').add(15, 'h').add(30, 'm').format('X'),
+                    title: 'Leo\'s holiday',
+                    content: 'yo',
+                    category: 'holiday'
+                }
+            ];
+            /**
+            * Init the calendar
+             */
+            var calendar = $('#calendar').Calendar({
+                locale: 'en',
+                weekday: {
+                    timeline: {
+                        intervalMinutes: 30,
+                        fromHour: 9
+                    }
+                },
+                events: events,
+                daynotes: daynotes,
+                defaultView: { largeScreen: 'month' }
+            }).init();
+            /**
+      * Listening for events
+      */
+
+            $('#calendar').on('Calendar.init', function (event, instance, before, current, after) {
+                console.log('event : Calendar.init');
+                console.log(instance);
+                console.log(before);
+                console.log(current);
+                console.log(after);
+            });
+            $('#calendar').on('Calendar.daynote-mouseenter', function (event, instance, elem) {
+                console.log('event : Calendar.daynote-mouseenter');
+                console.log(instance);
+                console.log(elem);
+            });
+            $('#calendar').on('Calendar.daynote-mouseleave', function (event, instance, elem) {
+                console.log('event : Calendar.daynote-mouseleave');
+                console.log(instance);
+                console.log(elem);
+            });
+            $('#calendar').on('Calendar.event-mouseenter', function (event, instance, elem) {
+                console.log('event : Calendar.event-mouseenter');
+                console.log(instance);
+                console.log(elem);
+            });
+            $('#calendar').on('Calendar.event-mouseleave', function (event, instance, elem) {
+                console.log('event : Calendar.event-mouseleave');
+                console.log(instance);
+                console.log(elem);
+            });
+            $('#calendar').on('Calendar.daynote-click', function (event, instance, elem, evt) {
+                console.log('event : Calendar.daynote-click');
+                console.log(instance);
+                console.log(elem);
+                console.log(evt);
+            });
+            $('#calendar').on('Calendar.event-click', function (event, instance, elem, evt) {
+                console.log('event : Calendar.event-click');
+                console.log(instance);
+                console.log(elem);
+                console.log(evt);
+            });
+        });
+
+    </script>
+    
 }
 
 @section Left
 {
-    <table id="schedulefilter" style="width:95%">
-        <tr>
-            <td colspan="2" style="padding-bottom:25px;text-align:center">
-                <button id="ptoRequest">Request PTO</button>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="font-weight:bold">Filter</td>
-        </tr>
-        <tr>
-            <td class="text7">Start Date</td>
-            <td><input id="weekpickerstart" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
-        </tr>
-        <tr>
-            <td class="text7">End Date</td>
-            <td><input id="weekpickerend" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
-        </tr>
-        <tr>
-            <td class="text7">Path</td>
-            <td>@Html.DropDownList("PathFilter", Model.Paths.Select(x => new SelectListItem() { Value = x, Text = x, Selected = true }), new { @id = "PathFilter", multiple = "true" })</td>
-        </tr>
-        <tr>
-            <td class="text7">Off Type</td>
-            <td>
-                <select id="OffTypeFilter" multiple="multiple" name="OffTypeFilter">
+    <table id="schedulefilter" class="table table-striped table-bordered" style="width:95%">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center" style="padding-bottom:25px;">
+                    <button id="ptoRequest" class="btn btn-primary">Request PTO</button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2" class="font-weight-bold">Filter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text7">Start Date</td>
+                <td><input id="weekpickerstart" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+            </tr>
+            <tr>
+                <td class="text7">End Date</td>
+                <td><input id="weekpickerend" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+            </tr>
+            <tr>
+                <td class="text7">Path</td>
+                <td>@Html.DropDownList("PathFilter", Model.Paths.Select(x => new SelectListItem() { Value = x, Text = x, Selected = true }), new { @id = "PathFilter", multiple = "true" })</td>
+            </tr>
+            <tr>
+                <td class="text7">Off Type</td>
+                <td>
+                    <select id="OffTypeFilter" multiple="multiple" name="OffTypeFilter">
+                        @foreach (var offtype in Model.Assignments)
+                        {
+                            <option selected="selected" value="@offtype.Item1" data-color-class="@offtype.Item2">@offtype.Item1</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
                     @foreach (var offtype in Model.Assignments)
                     {
-                        <option selected="selected" value="@offtype.Item1" data-color-class="@offtype.Item2">@offtype.Item1</option>
+                        <span><div class="box @offtype.Item2"></div>@offtype.Item1<br /></span>
                     }
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                @foreach (var offtype in Model.Assignments)
-                {
-                    <span><div class="box @offtype.Item2"></div>@offtype.Item1<br /></span>
-                }
-            </td>
-        </tr>
-        @if (Model.PTORequests.Any())
-        {
-            <tr>
-                <td colspan="2" style="font-weight:bold">PTO Requests</td>
+                </td>
             </tr>
-            foreach (var request in Model.PTORequests)
+            @if (Model.PTORequests.Any())
             {
-                <tr data-id="@request.pkPTO" data-p="@request.chrPath" data-sdate="@request.dteStart.ToShortDateString()" data-edate="@request.dteEnd.ToShortDateString()" data-ot="@request.chrAbbr" data-comment="@request.chrComments">
-                    <td style="text-align:right;">
-                        @if (isAdmin)
-                        {
-                            <button type="button" class="PTOApprove" style="cursor: pointer; border: none;padding:0px;"><i class="fa fa-check-circle" style="color: green;"></i></button>
-                        }
-                        <button type="button" class="PTOEdit" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-edit" style="color: #8C6B3D;"></i></button>
-                        @if (isAdmin)
-                        {
-                            <button type="button" class="PTOReject" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-times-circle" style="color: red;"></i></button>
-                        }
-                    </td>
-                    <td class="text5">@request.chrPath: @request.dteStart.ToString("M/d/yy")-@request.dteEnd.ToString("M/d/yy") (@request.chrAbbr)</td>
+                <tr>
+                    <td colspan="2" style="font-weight:bold">PTO Requests</td>
                 </tr>
+                foreach (var request in Model.PTORequests)
+                {
+                    <tr data-id="@request.pkPTO" data-p="@request.chrPath" data-sdate="@request.dteStart.ToShortDateString()" data-edate="@request.dteEnd.ToShortDateString()" data-ot="@request.chrAbbr" data-comment="@request.chrComments">
+                        <td style="text-align:right;">
+                            @if (isAdmin)
+                            {
+                                <button type="button" class="PTOApprove" style="cursor: pointer; border: none;padding:0px;"><i class="fa fa-check-circle" style="color: green;"></i></button>
+                            }
+                            <button type="button" class="PTOEdit" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-edit" style="color: #8C6B3D;"></i></button>
+                            @if (isAdmin)
+                            {
+                                <button type="button" class="PTOReject" style="cursor: pointer; border: none; padding: 0px;"><i class="fa fa-times-circle" style="color: red;"></i></button>
+                            }
+                        </td>
+                        <td class="text5">@request.chrPath: @request.dteStart.ToString("M/d/yy")-@request.dteEnd.ToString("M/d/yy") (@request.chrAbbr)</td>
+                    </tr>
+                }
             }
-        }
+        </tbody>
     </table>
 }
 
 <div id="content">
-    @Html.Partial("VacationScheduleCal", Model)
+    @Html.Partial("VacationScheduleCal2", Model)
 </div>
 
 @Html.Partial("PTO", Model.Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())

@@ -23,6 +23,7 @@
         .PTOClass {
             /*display: none;*/
             animation: blink 1s infinite;
+            color:red!important;
         }
 
         @@keyframes blink {
@@ -47,7 +48,7 @@
         <div class="navmenu">
             <nav>
                 <ul>
-                    <li class="PTOClass" id="ptoClass">@Html.ActionLink("PTO Requested", "VacationSchedule", "Admin", new { @style = "color:red" })</li>
+                    <li class="PTOClass" id="ptoClass">@Html.ActionLink("PTO Requested", "VacationSchedule", "Admin", new { @style = "color:red !important" })</li>
                     <li>@Html.ActionLink("Schedule", "Schedule", "Admin")</li>
                     <li>
                         <a>Pathologists</a>
