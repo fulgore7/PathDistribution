@@ -14,7 +14,7 @@ namespace PathDistribution
             routes.IgnoreRoute("js/{*pathInfo}");
 
             routes.MapMvcAttributeRoutes();
-
+            //TOdo add calendar route
             //routes.MapRoute(
             //    name: "Reports",
             //    url: "Admin/GetReport/{reportName}",

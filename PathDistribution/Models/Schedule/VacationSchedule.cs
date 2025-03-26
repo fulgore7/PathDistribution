@@ -35,6 +35,20 @@ namespace PathDistribution.Models
         public List<Tuple<string, string, string>> OffAssignments { get; set; }
     }
 
+    public class PathScheduleDatesCal
+    {
+        public DateTime dte { get; set; }
+        public int WeekNum { get; set; }
+        public string WkDay { get; set; }
+        public string chrPath { get; set; }
+        public string chrValue { get; set; }
+        public string chrColor { get; set; }
+        public List<string> Paths { get; set; }
+
+        public List<Tuple<string, string>> Assignments { get; set; }
+        public List<PTORequest> PTORequests { get; set; }
+    }
+
     public class PTORequest
     {
         public int pkPTO { get; set; }

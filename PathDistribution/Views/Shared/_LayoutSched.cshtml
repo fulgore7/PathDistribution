@@ -82,7 +82,7 @@
                                             <li>@Html.ActionLink("Eligibility", "Eligibility", "Admin")</li>
                                         }
                                         <li>@Html.ActionLink("Vacation Balance", "VacationBalances", "Admin")</li>
-                                        <li>@Html.ActionLink("Vacation Schedule", "VacationSchedule", "Admin")</li>
+                                        <li>@Html.ActionLink("Vacation Schedule", "VacationSchedule", "Admin", new {_calendar=true},null)</li>
                                     </ul>
                                 </li>
                                 @if (isAdmin)

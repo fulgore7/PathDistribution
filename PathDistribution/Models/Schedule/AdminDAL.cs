@@ -250,7 +250,42 @@ namespace PathDistribution.Models.DAL
                     .Map<VacationBalance>()
                     .FetchAll<VacationBalance>();
         }
+        //Returns a list of vacation schedules for the calendar view
+        public List<PathScheduleDatesCal> GetVacationSchedulesCal(DateTime? start, DateTime? end)
+        {
 
+            PathScheduleDatesCal data = new PathScheduleDatesCal
+            {
+                Paths = new List<string>(),
+                Assignments = new List<Tuple<string, string>>()
+            };
+            MultiResult rs = StoredProcedure("uspSchedGetVacationSchedulesCal")
+                 .AddParameter("@start", start ?? null, System.Data.SqlDbType.Date)
+                .AddParameter("@end", end ?? null, System.Data.SqlDbType.Date)
+                .Map<PathScheduleDatesCal>()
+                .Map(reader =>
+                {
+                    data.Paths.Add(reader.GetString(0));
+                    return null;
+                })
+                .Map(reader =>
+                {
+                    data.Assignments.Add(new Tuple<string, string>(reader.GetString(0), reader.GetString(1)));
+                    return null;
+                })
+                .Map<PTORequest>()
+                .FetchMultiple();
+
+            Parallel.Invoke(() =>  { data.PTORequests = rs.FetchAll<PTORequest>(5); });
+
+            return data;
+
+
+
+            //return StoredProcedure("uspSchedGetVacationSchedulesCal")
+            //             .Map<PathScheduleDatesCal>()
+
+        }
         public VacationSchedules GetVacationSchedules(DateTime? start, DateTime? end)
         {
             VacationSchedules data = new VacationSchedules

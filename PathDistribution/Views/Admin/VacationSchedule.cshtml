@@ -1,7 +1,14 @@
 ﻿@using System.Web.Optimization
 @using PathDistribution.Helpers
-@model PathDistribution.Models.VacationSchedules
-
+@model dynamic
+@if (Model is PathDistribution.Models.PathScheduleDatesCal Cal)
+{
+    
+}
+else if (Model is PathDistribution.Models.VacationSchedules Dates)
+{
+    // Handle the case where Model is of type VacationSchedules
+}
 @{
     ViewBag.Title = "Vacation Schedule";
     Layout = "~/Views/Shared/_LayoutSched.cshtml";
@@ -704,9 +711,7 @@
                         fromHour: 9
                     }
                 },
-                events: events,
-                daynotes: daynotes,
-                defaultView: { largeScreen: 'month' }
+               defaultView: { largeScreen: 'month' }
             }).init();
             /**
       * Listening for events
@@ -831,7 +836,8 @@
 }
 
 <div id="content">
-    @Html.Partial("VacationScheduleCal2", Model)
+
+        @Html.Partial("VacationScheduleCal2", @Cal)
 </div>
 
 @Html.Partial("PTO", Model.Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())

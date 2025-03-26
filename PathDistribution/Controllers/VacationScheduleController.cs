@@ -8,11 +8,17 @@ namespace PathDistribution.Controllers
     public partial class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult VacationSchedule()
+        public ActionResult VacationSchedule(bool _calendar)
         {
             AdminDAL adminDAL = new AdminDAL();
-
-            return View(adminDAL.GetVacationSchedules(new DateTime?(), new DateTime?()));
+            if (_calendar)
+            {
+                return PartialView("VacationSchedule", adminDAL.GetVacationSchedulesCal(new DateTime?(), new DateTime?()));
+            }
+            else
+            {
+                return PartialView("VacationSchedule", adminDAL.GetVacationSchedules(new DateTime?(), new DateTime?()).PathScheduleData);
+            }   
         }
 
         // GET: Admin
@@ -22,5 +28,12 @@ namespace PathDistribution.Controllers
 
             return PartialView("VacationScheduleCal2",adminDAL.GetVacationSchedules(dteStart, dteEnd).PathScheduleData);
         }
+        public ActionResult RefreshVacationScheduleCal2(DateTime dteStart, DateTime dteEnd)
+        {
+            AdminDAL adminDAL = new AdminDAL();
+
+           return PartialView("VacationScheduleCal",adminDAL.GetVacationSchedulesCal(dteStart, dteEnd));
+        }
+
     }
 }
