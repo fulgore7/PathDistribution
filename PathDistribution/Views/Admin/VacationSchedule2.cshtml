@@ -1,6 +1,6 @@
 ﻿@using System.Web.Optimization
 @using PathDistribution.Helpers
-@model PathDistribution.Models.VacationSchedules
+@model List<PathDistribution.Models.PathScheduleDatesCal>
 @{
     ViewBag.Title = "Vacation Schedule";
     Layout = "~/Views/Shared/_LayoutSched.cshtml";
@@ -770,21 +770,21 @@
         <tbody>
             <tr>
                 <td class="text7">Start Date</td>
-                <td><input id="weekpickerstart" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+                <td><input id="weekpickerstart" data-min="@Model[0].Dates.Item1" data-max="@Model[0].Dates.Item2" /></td>
             </tr>
             <tr>
                 <td class="text7">End Date</td>
-                <td><input id="weekpickerend" data-min="@Model.Dates.Item1" data-max="@Model.Dates.Item2" /></td>
+                <td><input id="weekpickerend" data-min="@Model[0].Dates.Item1" data-max="@Model[0].Dates.Item2" /></td>
             </tr>
             <tr>
                 <td class="text7">Path</td>
-                <td>@Html.DropDownList("PathFilter", Model.Paths.Select(x => new SelectListItem() { Value = x, Text = x, Selected = true }), new { @id = "PathFilter", multiple = "true" })</td>
+                <td>@Html.DropDownList("PathFilter", Model[0].Paths.Select(x => new SelectListItem() { Value = x, Text = x, Selected = true }), new { @id = "PathFilter", multiple = "true" })</td>
             </tr>
             <tr>
                 <td class="text7">Off Type</td>
                 <td>
                     <select id="OffTypeFilter" multiple="multiple" name="OffTypeFilter">
-                        @foreach (var offtype in Model.Assignments)
+                        @foreach (var offtype in Model[0].Assignments)
                         {
                             <option selected="selected" value="@offtype.Item1" data-color-class="@offtype.Item2">@offtype.Item1</option>
                         }
@@ -794,18 +794,18 @@
             <tr>
                 <td></td>
                 <td>
-                    @foreach (var offtype in Model.Assignments)
+                    @foreach (var offtype in Model[0].Assignments)
                     {
                         <span><div class="box @offtype.Item2"></div>@offtype.Item1<br /></span>
                     }
                 </td>
             </tr>
-            @if (Model.PTORequests.Any())
+            @if (Model[0].PTORequests.Any())
             {
                 <tr>
                     <td colspan="2" style="font-weight:bold">PTO Requests</td>
                 </tr>
-                foreach (var request in Model.PTORequests)
+                foreach (var request in Model[0].PTORequests)
                 {
                     <tr data-id="@request.pkPTO" data-p="@request.chrPath" data-sdate="@request.dteStart.ToShortDateString()" data-edate="@request.dteEnd.ToShortDateString()" data-ot="@request.chrAbbr" data-comment="@request.chrComments">
                         <td style="text-align:right;">
@@ -832,4 +832,4 @@
         @Html.Partial("VacationScheduleCal2", @Cal)
 </div>
 
-@Html.Partial("PTO", Model.Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())
+@Html.Partial("PTO", Model[0].Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())

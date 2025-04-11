@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -253,38 +254,45 @@ namespace PathDistribution.Models.DAL
         //Returns a list of vacation schedules for the calendar view
         public List<PathScheduleDatesCal> GetVacationSchedulesCal(DateTime? start, DateTime? end)
         {
-
-            PathScheduleDatesCal data = new PathScheduleDatesCal
-            {
-                Paths = new List<string>(),
-                Assignments = new List<Tuple<string, string>>()
-            };
+            List<PathScheduleDatesCal> data = new List<PathScheduleDatesCal>();
+            List<string> paths = new List<string>();
+            List<Tuple<string, string>> assignments = new List<Tuple<string, string>>();
+            List<Tuple<DateTime, DateTime>> dates = new List<Tuple<DateTime, DateTime>>();
             MultiResult rs = StoredProcedure("uspSchedGetVacationSchedulesCal")
-                 .AddParameter("@start", start ?? null, System.Data.SqlDbType.Date)
+                .AddParameter("@start", start ?? null, System.Data.SqlDbType.Date)
                 .AddParameter("@end", end ?? null, System.Data.SqlDbType.Date)
+
                 .Map<PathScheduleDatesCal>()
                 .Map(reader =>
                 {
-                    data.Paths.Add(reader.GetString(0));
+                    paths.Add(reader.GetString(0));
                     return null;
                 })
                 .Map(reader =>
                 {
-                    data.Assignments.Add(new Tuple<string, string>(reader.GetString(0), reader.GetString(1)));
+                    assignments.Add(new Tuple<string, string>(reader.GetString(0), reader.GetString(1)));
                     return null;
                 })
-                .Map<PTORequest>()
+                .Map<PTORequest>() // Map PTORequest after PathScheduleDatesCal
+                .Map(reader =>
+                {
+                    dates.Add(new Tuple<DateTime, DateTime>(reader.GetDateTime(0), reader.GetDateTime(1)));
+                    return null;
+                })
+
                 .FetchMultiple();
 
-            Parallel.Invoke(() =>  { data.PTORequests = rs.FetchAll<PTORequest>(5); });
+            data = rs.FetchAll<PathScheduleDatesCal>(0);
 
+            List<PTORequest> ptoRequests = rs.FetchAll<PTORequest>(3);
+            data.ForEach(d =>
+            {
+                d.Paths = paths; // Add the path to the list   
+                d.Assignments = assignments; // Add the assignments to the list
+                d.PTORequests = ptoRequests; // Assign the PTORequests to each PathScheduleDatesCal object
+                d.Dates = dates.FirstOrDefault(); // Assign the first tuple from the list to the Dates property
+            });
             return data;
-
-
-
-            //return StoredProcedure("uspSchedGetVacationSchedulesCal")
-            //             .Map<PathScheduleDatesCal>()
-
         }
         public VacationSchedules GetVacationSchedules(DateTime? start, DateTime? end)
         {

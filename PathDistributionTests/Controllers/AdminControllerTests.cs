@@ -32,7 +32,7 @@ namespace PathDistribution.Controllers.Tests
                         // .Returns(expectedSchedules);
 
             // Act
-            var result = _controller.VacationSchedule() as ViewResult;
+            var result = _controller.VacationSchedule(true) as ViewResult;
             var model = result.Model as VacationSchedules;
             var pathScheduleData = model.PathScheduleData;
             var ptoRequests = model.PTORequests;

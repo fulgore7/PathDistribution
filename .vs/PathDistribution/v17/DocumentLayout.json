@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\models\\schedule\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\models\\schedule\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\models\\schedule\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\models\\schedule\\vacationschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\models\\schedule\\vacationschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\views\\admin\\vacationschedule2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\vacationschedule2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\admin\\vacationschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\vacationschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BDF8BB88-69F2-400A-ACB3-FE911B461F7A}|PathDistributionTests\\PathDistributionTests.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistributiontests\\controllers\\admincontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF8BB88-69F2-400A-ACB3-FE911B461F7A}|PathDistributionTests\\PathDistributionTests.csproj|solutionrelative:pathdistributiontests\\controllers\\admincontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\models\\schedule\\vacationschedule.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\models\\schedule\\vacationschedule.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\controllers\\vacationschedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\controllers\\vacationschedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDF8BB88-69F2-400A-ACB3-FE911B461F7A}|PathDistributionTests\\PathDistributionTests.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistributiontests\\controllers\\admincontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDF8BB88-69F2-400A-ACB3-FE911B461F7A}|PathDistributionTests\\PathDistributionTests.csproj|solutionrelative:pathdistributiontests\\controllers\\admincontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\admin\\vacationschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\vacationschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\views\\admin\\vacationschedulecal2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\vacationschedulecal2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\views\\shared\\_layoutsched.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\shared\\_layoutsched.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|c:\\users\\mcoleman\\source\\repos\\fulgore7\\pathdistribution\\pathdistribution\\pathdistribution\\views\\admin\\vacationschedulecal2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\views\\admin\\vacationschedulecal2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\pathdistribution\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}|PathDistribution\\PathDistribution.csproj|solutionrelative:pathdistribution\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,8 +45,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 379,
-          "SelectedChildIndex": 6,
+          "DockedWidth": 206,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,45 +58,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RouteConfig.cs",
-              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\App_Start\\RouteConfig.cs",
-              "RelativeDocumentMoniker": "PathDistribution\\App_Start\\RouteConfig.cs",
-              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\App_Start\\RouteConfig.cs",
-              "RelativeToolTip": "PathDistribution\\App_Start\\RouteConfig.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBAAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T12:45:00.012Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VacationSchedule.cshtml",
-              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
-              "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
-              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
-              "RelativeToolTip": "PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
-              "ViewState": "AgIAACcDAAAAAAAAAAAwwBADAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-18T14:50:48.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "VacationSchedule.cs",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Models\\Schedule\\VacationSchedule.cs",
               "RelativeDocumentMoniker": "PathDistribution\\Models\\Schedule\\VacationSchedule.cs",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Models\\Schedule\\VacationSchedule.cs",
               "RelativeToolTip": "PathDistribution\\Models\\Schedule\\VacationSchedule.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwDAAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:11:05.438Z",
+              "WhenOpened": "2025-04-11T20:07:26.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VacationScheduleController.cs",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Controllers\\VacationScheduleController.cs",
+              "RelativeDocumentMoniker": "PathDistribution\\Controllers\\VacationScheduleController.cs",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Controllers\\VacationScheduleController.cs",
+              "RelativeToolTip": "PathDistribution\\Controllers\\VacationScheduleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T19:01:28.841Z",
               "EditorCaption": ""
             },
             {
@@ -103,65 +90,95 @@
               "RelativeDocumentMoniker": "PathDistribution\\Models\\Schedule\\AdminDAL.cs",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Models\\Schedule\\AdminDAL.cs",
               "RelativeToolTip": "PathDistribution\\Models\\Schedule\\AdminDAL.cs",
-              "ViewState": "AgIAAPYAAAAAAAAAAAA6wAABAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAtwBkBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T14:28:46.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_LayoutSched.cshtml",
-              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
-              "RelativeDocumentMoniker": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
-              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
-              "RelativeToolTip": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAuwFEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T17:14:27.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VacationScheduleController.cs",
-              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Controllers\\VacationScheduleController.cs",
-              "RelativeDocumentMoniker": "PathDistribution\\Controllers\\VacationScheduleController.cs",
-              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Controllers\\VacationScheduleController.cs",
-              "RelativeToolTip": "PathDistribution\\Controllers\\VacationScheduleController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T19:01:28.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "AdminControllerTests.cs",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistributionTests\\Controllers\\AdminControllerTests.cs",
               "RelativeDocumentMoniker": "PathDistributionTests\\Controllers\\AdminControllerTests.cs",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistributionTests\\Controllers\\AdminControllerTests.cs",
               "RelativeToolTip": "PathDistributionTests\\Controllers\\AdminControllerTests.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwE4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T14:53:54.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_LayoutSched.cshtml",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
+              "RelativeDocumentMoniker": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
+              "RelativeToolTip": "PathDistribution\\Views\\Shared\\_LayoutSched.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T17:14:27.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "PathDistribution\\App_Start\\RouteConfig.cs",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "PathDistribution\\App_Start\\RouteConfig.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T12:45:00.012Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 21,
+          "DockedWidth": 194,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
+              "Title": "VacationSchedule2.cshtml",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule2.cshtml",
+              "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\VacationSchedule2.cshtml",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule2.cshtml",
+              "RelativeToolTip": "PathDistribution\\Views\\Admin\\VacationSchedule2.cshtml",
+              "ViewState": "AgIAAAkDAAAAAAAAAAAlwAcDAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T15:50:06.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VacationSchedule.cshtml",
+              "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
+              "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
+              "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
+              "RelativeToolTip": "PathDistribution\\Views\\Admin\\VacationSchedule.cshtml",
+              "ViewState": "AgIAAOsCAAAAAAAAAAAlwAgDAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-18T14:50:48.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "VacationScheduleCal2.cshtml",
               "DocumentMoniker": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationScheduleCal2.cshtml",
               "RelativeDocumentMoniker": "PathDistribution\\Views\\Admin\\VacationScheduleCal2.cshtml",
               "ToolTip": "C:\\Users\\mcoleman\\source\\repos\\fulgore7\\PathDistribution\\PathDistribution\\PathDistribution\\Views\\Admin\\VacationScheduleCal2.cshtml",
               "RelativeToolTip": "PathDistribution\\Views\\Admin\\VacationScheduleCal2.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-18T16:26:18.441Z",
               "EditorCaption": ""

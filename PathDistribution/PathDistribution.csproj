@@ -521,6 +521,7 @@
     <Content Include="Views\Admin\VacationScheduleCalData.cshtml" />
     <Content Include="Views\Shared\_LayoutSched - Copy.cshtml" />
     <Content Include="Views\Admin\VacationScheduleCal2.cshtml" />
+    <Content Include="Views\Admin\VacationSchedule2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

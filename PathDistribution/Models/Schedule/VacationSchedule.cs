@@ -47,6 +47,7 @@ namespace PathDistribution.Models
 
         public List<Tuple<string, string>> Assignments { get; set; }
         public List<PTORequest> PTORequests { get; set; }
+        public Tuple<DateTime, DateTime> Dates { get; set; }
     }
 
     public class PTORequest

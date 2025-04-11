@@ -91,6 +91,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\AdminControllerTests.cs" />
+    <Compile Include="DAL\AdminDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
