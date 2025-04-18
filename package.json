@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "arrobefr-jquery-calendar": "^1.0.12"
+    "arrobefr-jquery-calendar": "^1.0.12",
+    "fullcalendar": "^6.1.17"
   }
 }

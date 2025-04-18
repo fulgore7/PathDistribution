@@ -26,7 +26,10 @@ namespace PathDistribution
 
             bundles.Add(new ScriptBundle("~/bundles/a")
                             .Include("~/Scripts/jquery-{version}.js")
-                            .Include("~/Scripts/jquery-ui-{version}.js"));
+                            .Include("~/Scripts/jquery-ui-{version}.js")
+                            .Include("~/Scripts/moment.js")
+                            .Include("~/Scripts/moment-with-locales.js")
+                            .Include("~/Scripts/jquery-calendar.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/b")
                             .Include("~/Scripts/jquery.tmpl.js"));
@@ -38,7 +41,7 @@ namespace PathDistribution
                 .Include("~/Content/bootstrap.css")
                 .Include("~/Content/themes/base/jquery-ui.css")
                 .Include("~/Content/css/jquery-calendar.min.css"));
-
+                
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/d").Include(

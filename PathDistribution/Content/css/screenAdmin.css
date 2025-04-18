@@ -31,8 +31,8 @@ main {
 */}
 
 section.sectionleft {
-    width: fit-content;
-    background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
+/*    width: fit-content;
+*/    background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
 }
 
 div.title {
@@ -45,8 +45,8 @@ div.title {
 }
 
 section.sectionright {
-    width: fit-content;
-    background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
+/*    width: fit-content;
+*/    background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
     padding-left: 10px;
 }
 

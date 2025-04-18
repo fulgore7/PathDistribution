@@ -37,11 +37,10 @@ namespace PathDistribution.Models
 
     public class PathScheduleDatesCal
     {
-        public DateTime dte { get; set; }
-        public int WeekNum { get; set; }
-        public string WkDay { get; set; }
         public string chrPath { get; set; }
-        public string chrValue { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string cActLabel { get; set; }
         public string chrColor { get; set; }
         public List<string> Paths { get; set; }
 

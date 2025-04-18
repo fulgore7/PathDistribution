@@ -13,7 +13,7 @@ namespace PathDistribution.Controllers
             AdminDAL adminDAL = new AdminDAL();
             if (_calendar)
             {
-                return PartialView("VacationSchedule", adminDAL.GetVacationSchedulesCal(new DateTime?(), new DateTime?()));
+                return PartialView("VacationSchedule2", adminDAL.GetVacationSchedulesCal(new DateTime?(), new DateTime?()));
             }
             else
             {
@@ -32,7 +32,7 @@ namespace PathDistribution.Controllers
         {
             AdminDAL adminDAL = new AdminDAL();
 
-           return PartialView("VacationScheduleCal",adminDAL.GetVacationSchedulesCal(dteStart, dteEnd));
+           return PartialView("VacationScheduleCal2",adminDAL.GetVacationSchedulesCal(dteStart, dteEnd));
         }
 
     }

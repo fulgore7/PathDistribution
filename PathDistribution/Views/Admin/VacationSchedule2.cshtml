@@ -184,9 +184,8 @@
 
 @section scripts
 {
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
     @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/e")
-<script src="~/Scripts/jquery-calendar.min.js"></script>
-<script src="~/Scripts/moment-with-locales.js"></script>
     <script type="text/javascript" language="javascript">
 
     $(function () {
@@ -668,90 +667,102 @@
         }
         /*
         Calendar Section
-        */ 
-        $(document).ready(function () {
-            moment.locale('en');
-            var now = moment();
-            var events = [
-                {
-                    start: now.startOf('week').add(9, 'h').format('X'),
-                    end: now.startOf('week').add(10, 'h').format('X'),
-                    title: '1',
-                    content: 'Hello World! <br> <p>Foo Bar</p>',
-                    category: 'Professionnal'
-                },
-            ];
-            /**
-            * A daynote
-            */
-            var daynotes = [
-                {
-                    time: now.startOf('week').add(15, 'h').add(30, 'm').format('X'),
-                    title: 'Leo\'s holiday',
-                    content: 'yo',
-                    category: 'holiday'
-                }
-            ];
-            /**
-            * Init the calendar
-             */
-            var calendar = $('#calendar').Calendar({
-                locale: 'en',
-                weekday: {
-                    timeline: {
-                        intervalMinutes: 30,
-                        fromHour: 9
-                    }
-                },
-               defaultView: { largeScreen: 'month' }
-            }).init();
+        */
+        //$(document).ready(function () {
+        //    moment.locale('en');
+        //    var now = moment();
+        //    var events = [
+        //        {
+        //            start: now.startOf('week').add(9, 'h').format('X'),
+        //            end: now.startOf('week').add(10, 'h').format('X'),
+        //            title: '1',
+        //            content: 'Hello World! <br> <p>Foo Bar</p>',
+        //            category: 'Professionnal'
+        //        },
+        //    ];
+        //    /**
+        //    * A daynote
+        //    */
+        //    var daynotes = [
+        //        {
+        //            time: now.startOf('week').add(15, 'h').add(30, 'm').format('X'),
+        //            title: 'Leo\'s holiday',
+        //            content: 'yo',
+        //            category: 'holiday'
+        //        }
+        //    ];
+        //    /**
+        //    * Init the calendar
+        //     */
+        //    var calendar = $('#calendar').Calendar({
+        //        locale: 'en',
+        //        weekday: {
+        //            timeline: {
+        //                intervalMinutes: 30,
+        //                fromHour: 9
+        //            }
+        //        },
+        //       defaultView: { largeScreen: 'month' }
+        //    }).init();
             /**
       * Listening for events
       */
 
-            $('#calendar').on('Calendar.init', function (event, instance, before, current, after) {
-                console.log('event : Calendar.init');
-                console.log(instance);
-                console.log(before);
-                console.log(current);
-                console.log(after);
-            });
-            $('#calendar').on('Calendar.daynote-mouseenter', function (event, instance, elem) {
-                console.log('event : Calendar.daynote-mouseenter');
-                console.log(instance);
-                console.log(elem);
-            });
-            $('#calendar').on('Calendar.daynote-mouseleave', function (event, instance, elem) {
-                console.log('event : Calendar.daynote-mouseleave');
-                console.log(instance);
-                console.log(elem);
-            });
-            $('#calendar').on('Calendar.event-mouseenter', function (event, instance, elem) {
-                console.log('event : Calendar.event-mouseenter');
-                console.log(instance);
-                console.log(elem);
-            });
-            $('#calendar').on('Calendar.event-mouseleave', function (event, instance, elem) {
-                console.log('event : Calendar.event-mouseleave');
-                console.log(instance);
-                console.log(elem);
-            });
-            $('#calendar').on('Calendar.daynote-click', function (event, instance, elem, evt) {
-                console.log('event : Calendar.daynote-click');
-                console.log(instance);
-                console.log(elem);
-                console.log(evt);
-            });
-            $('#calendar').on('Calendar.event-click', function (event, instance, elem, evt) {
-                console.log('event : Calendar.event-click');
-                console.log(instance);
-                console.log(elem);
-                console.log(evt);
-            });
-        });
 
     </script>
-    
+    <script type="text/javascript" language="javascript">
+   const colorNamesToHex = {
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "red": "#FF0000",
+    "green": "#008000",
+    "blue": "#0000FF",
+    "yellow": "#FFFF00",
+    "purple": "#800080",
+    "orange": "#FFA500",
+    "pink": "#FFC1CC",
+    "gray": "#808080",
+    // Add more colors as needed
+};
+
+function nameToHex(colorName) {
+    // Convert to lowercase for case-insensitive matching
+    const hex = colorNamesToHex[colorName.toLowerCase()];
+    return hex || null; // Return null if color not found
+    }
+    $(function () {
+
+        var modelData = @Html.Raw(Json.Encode(Model));
+        // Initialize the events array
+        var _events = [];
+
+        // Loop through each item in the model data
+        modelData.forEach(function (item) {
+            _events.push({
+                start: moment(item.StartDate).format('yyyy-MM-DD'), // Adjust the property names as needed
+                end: moment(item.EndDate).add(1, 'days').format('yyyy-MM-DD'), // Add 1 day to EndDate
+                title: item.chrPath + '-'+ item.cActLabel,                        // Adjust the property names as needed
+                backgroundColor: nameToHex(item.chrColor),                    // Adjust the property names as needed
+                });
+        });
+        console.log(_events);
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: _events,
+            height: 'auto'
+        });
+        calendar.render();
+        console.log(calendar.getEvents());
+    });
+
+        $(document).ready(function () {
+            $('#calendar').on('Calendar.init', function (event, instance, before, current, after) {
+                console.log('event : Calendar.init');
+                console.log(current);
+            });
+        });
+    </script>
 }
 
 @section Left
@@ -770,11 +781,11 @@
         <tbody>
             <tr>
                 <td class="text7">Start Date</td>
-                <td><input id="weekpickerstart" data-min="@Model[0].Dates.Item1" data-max="@Model[0].Dates.Item2" /></td>
+                <td><input id="weekpickerstart" data-min="@Model.FirstOrDefault().StartDate" data-max="@Model.LastOrDefault().StartDate" /></td>
             </tr>
             <tr>
                 <td class="text7">End Date</td>
-                <td><input id="weekpickerend" data-min="@Model[0].Dates.Item1" data-max="@Model[0].Dates.Item2" /></td>
+                <td><input id="weekpickerend" data-min="@Model.LastOrDefault().EndDate" data-max="@Model.LastOrDefault().EndDate" /></td>
             </tr>
             <tr>
                 <td class="text7">Path</td>
@@ -829,7 +840,7 @@
 
 <div id="content">
 
-        @Html.Partial("VacationScheduleCal2", @Cal)
+    @Html.Partial("VacationScheduleCal2", Model)
 </div>
 
 @Html.Partial("PTO", Model[0].Assignments.Where(x => !x.Item1.Equals("PEND")).ToList())

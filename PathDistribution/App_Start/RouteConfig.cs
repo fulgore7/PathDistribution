@@ -20,6 +20,11 @@ namespace PathDistribution
             //    url: "Admin/GetReport/{reportName}",
             //    defaults: new { controller = "Admin", action = "GetReport", reportName = "Test" }
             //);
+            routes.MapRoute(
+                name: "calendar",
+                url: "{controller}/{action}/{_calendar}",
+                defaults: new { controller = "Start", action = "Index", _calendar = true}
+            );
 
             routes.MapRoute(
                 name: "Default",
