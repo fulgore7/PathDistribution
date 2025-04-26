@@ -1,15 +1,12 @@
 ﻿body {
-    min-height: 98vh;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
     min-height: 116px;
     background-image: url('/Content/img/headerbg3.jpg');
     background-size: cover;
-    display: flex;
-}
+/*    display: flex;
+*/}
 
 span.AppTitle {
     font-size: 26pt;
@@ -28,14 +25,14 @@ div.navmenu {
 }
 
 main {
-    display: flex;
+/*    display: flex;
     width: 100%;
     flex: 1;
-}
+*/}
 
 section.sectionleft {
-    width: 15%;
-    background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
+/*    width: fit-content;
+*/    background: linear-gradient(to bottom, #EFE7DC, #F3F4F8);
 }
 
 div.title {
@@ -48,8 +45,8 @@ div.title {
 }
 
 section.sectionright {
-    width: 85%;
-    background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
+/*    width: fit-content;
+*/    background: linear-gradient(to bottom, #A6BAD0, #F3F4F8);
     padding-left: 10px;
 }
 
@@ -79,6 +76,12 @@ footer {
     text-decoration: none;
 }
 
+.text5 {
+    font: 12px/14px arial;
+    color: #36455a;
+    line-height: 16px;
+}
+
 .text7 {
     font: bold 11px/11px Georgia;
     color: #8c6b3d;
@@ -95,6 +98,30 @@ footer {
     font: 12px/12px Arial;
     color: #466b95;
 }
+
+/*.modal-dialog2 {
+    position: absolute;
+    visibility: hidden;
+    width: 300px;
+    height: 160px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 15px;
+    text-align: center;
+    opacity: 1;
+    z-index: 1500;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+    -o-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+}*/
+
 /* MENU */
 nav ul {
     list-style: none;
@@ -102,36 +129,37 @@ nav ul {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+.nav-item{ padding: 8px 4px;}
     /* FIRST LEVEL MENU */
     nav ul li {
-        display: inline-block;
+/*        display: inline-block;
         position: relative;
-    }
+*/    }
 
         nav ul li a {
-            display: block;
+/*            display: block; */
             padding: 8px 10px;
             transition: background-color 0.3s;
-            text-decoration: none;
+            text-decoration: none !important;
             color: #466b95;
-            font-size: 12pt;
-            font-weight: bold;
-            cursor: pointer;
+            font-size: 12pt !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
         }
 
             nav ul li a:hover {
-                background-color: #EDB567;
+                background-color: #EDB567 !important;
             }
         /* SECOND LEVEL MENU */
         nav ul li ul {
             display: none;
             position: absolute;
-            background-color: #EFE7DC;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
-            margin-top: -3px;
-            z-index: 1;
-            right: 0;
+            background-color: #EFE7DC !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid #ccc !important;
+            margin-top: -3px !important;
+            z-index: 1 !important;
+            right: 0 !important;
         }
 
         nav ul li:hover ul {
@@ -139,14 +167,14 @@ nav ul {
         }
 
         nav ul li ul li {
-            display: block;
-            white-space: nowrap;
+/*            display: block;
+*/            white-space: nowrap;
         }
 
             nav ul li ul li a {
-                display: block;
+/*                display: block;
                 padding: 10px 10px;
-                text-decoration: none;
+*/                text-decoration: none;
                 transition: background-color 0.3s;
                 color: #466b95;
                 font-size: 11pt;
@@ -158,3 +186,6 @@ nav ul {
                     background-color: #EDB567;
                     font-weight: bold;
                 }
+.required-asterisk {
+    color: red;
+}

@@ -1,0 +1,80 @@
+﻿@model PathDistribution.Models.StartSettings
+
+@{
+    ViewBag.Title = "Pathologist Distribution";
+}
+
+@section Left
+{
+ 
+}
+
+@using (Html.BeginForm("Index", "Start", FormMethod.Post, new { id = "StartForm" }))
+{
+    <div id="content" style="min-height:225px">
+        <div id="container" style="height:225px;display:flex;align-items:center;justify-content:center;">
+            <table>
+                <tr>
+                    <td colspan="2">Please specify the accession date range that we will be processing</td>
+                </tr>
+                <tr>
+                    <td align="right">Start:</td>
+                    <td align="left">@Html.TextBoxFor(x => Model.StartAccession, "{0:MM/dd/yyyy}", new { @style= "width:80px" })</td>
+                </tr>
+                <tr>
+                    <td align="right">End:</td>
+                    <td align="left">@Html.TextBoxFor(x => Model.EndAccession, "{0:MM/dd/yyyy}", new { @style = "width:80px" })</td>
+                </tr>
+                <tr>
+                    <td align="right">Priority:</td>
+                    <td align="left">@Html.EnumDropDownListFor(x => Model.Priority)</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><button class="cartbutton" type="button" id="StartProceed">Proceed</button></td>
+                </tr>
+            </table>            
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Reset", "Start", FormMethod.Post, new { id = "ResetForm" }))
+{
+    @Html.HiddenFor(x => Model.StartAccession)
+    @Html.HiddenFor(x => Model.EndAccession)
+    @Html.HiddenFor(x => Model.Priority)
+
+    <div id="content" style="min-height:225px">
+        <div id="container" style="height:225px;display:flex;align-items:center;justify-content:center;">
+            <table>
+                <tr>
+                    <td colspan="2">Please specify the date of distribution to erase.</td>
+                </tr>
+                <tr>
+                    <td align="right">Start:</td>
+                    <td align="left">@Html.TextBoxFor(x => Model.ResetDist, "{0:MM/dd/yyyy}", new { @style = "width:80px" })</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><button class="cartbutton" type="button" id="StartReset">Reset</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+@section scripts {
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        @if (TempData["ResetDay"] != null)
+{
+    bool bResetDay = (bool)TempData["ResetDay"];
+    if (bResetDay)
+    {
+        @:alert('The selected date has been successfully erased.');
+            }
+    else
+    {
+        @:alert('The selected date has NOT been successfully erased. Either the selected date does not exist or has been previously generated.');
+    }
+}
+    });
+</script>
+}

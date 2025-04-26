@@ -128,6 +128,7 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDi
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\Newtonsoft.Json.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\WebMarkupMin.AspNet4.Common.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\WebMarkupMin.AspNet.Common.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\System.Memory.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\PdfSharp.System.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\Microsoft.ReportViewer.Common.dll
@@ -164,6 +165,7 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDi
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\WebMarkupMin.AspNet4.Common.xml
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\WebMarkupMin.AspNet.Common.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\PdfSharp.System.pdb
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\PdfSharp.System.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\Newtonsoft.Json.Bson.pdb
@@ -171,6 +173,7 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDi
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\WebMarkupMin.Core.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\AdvancedStringBuilder.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\bin\Debug\SPFramework.SSRS.XmlSerializers.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\obj\Debug\PathDistributionTests.csproj.AssemblyReference.cache
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\obj\Debug\PathDistributionTests.csproj.CoreCompileInputs.cache
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistributionTests\obj\Debug\PathDist.79EC81FF.Up2Date

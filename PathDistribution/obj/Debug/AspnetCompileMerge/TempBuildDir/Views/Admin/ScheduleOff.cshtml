@@ -1,6 +1,9 @@
 ﻿@using PathDistribution.Helpers
 @model List<PathDistribution.Models.OffSchedule>
 
+@{ 
+    bool isAdmin = System.Web.HttpContext.Current.IsAdmin();
+}
 <table id="offschedule" cellspacing="3" cellpadding="0" style="width:100%">
     <thead class="text2" style="text-align:center;">
         <tr>
@@ -24,7 +27,7 @@
                 {
                     <td style="width:35px;">@Html.TextBoxFor(a => off.chrPath, new { @style = "width:35px;text-align:center;pointer-events:none", @readonly = "readonly" })</td>
                     <td style="width:auto;">@Html.TextBoxFor(a => off.chrName, new { @style = "width:auto;pointer-events:none", @readonly = "readonly" })</td>
-                    if (System.Web.HttpContext.Current.IsAdmin())
+                    if (isAdmin)
                     {
                         <td style="width:35px;">@Html.TextBoxFor(a => off.Mo, new { @style = "width:35px;text-align:center;", @class = "PathOffList", @data_path = off.chrPath, @data_dw = "Monday", @readonly = "readonly" })</td>
                         <td style="width:35px;">@Html.TextBoxFor(a => off.Tu, new { @style = "width:35px;text-align:center;", @class = "PathOffList", @data_path = off.chrPath, @data_dw = "Tuesday", @readonly = "readonly" })</td>

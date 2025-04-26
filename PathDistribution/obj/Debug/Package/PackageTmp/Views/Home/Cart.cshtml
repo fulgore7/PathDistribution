@@ -1,0 +1,36 @@
+﻿@model PathDistribution.Models.CaseMoves
+
+<div class="cart-tab" style="display:none">
+    <div class="cart">
+        <div class="cart-items">
+            <ul>
+                <li>
+                    <div class="text8">No cases selected</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="myModal2" class="modal-dialog" role="dialog">
+    <span class="text7" style="font-size: 14px;font-weight:bold;">Please enter the reason?</span><br/>
+    <div id="overlimitdiv">
+        <input type="radio" value="overlimit" id="radiooverlimit" />
+        <label for="radiooverlimit">Overlimit</label>
+    </div>
+    <textarea rows="4" cols="25" id="inputComment" maxlength="255"></textarea>
+    <div style="float:right;margin-right:10px;margin-bottom:5px;margin-top:5px">
+        <button id="closecartmodal" type="button" class="cartbutton">Close</button>
+        <button id="applycartmodal" type="button" class="cartbutton">Apply</button>
+    </div>
+</div>
+
+<script type="text/x-jquery-tmpl" id="newli">
+    <li data-content="${id}">
+        <input name='cases[${index}].chrCaseNumber' id='cases_chrCaseNumber' type='hidden' value='${id}'/>
+        <input name='cases[${index}].chrPath' id='cases_chrPath' type='hidden' value='${Path}'/>
+        <input name='cases[${index}].intSlideCount' id='cases_intSlideCount' type='hidden' value='${slidecount}' />
+        <input name='cases[${index}].dteDateAssigned' id='cases_dteDateAssigned' type='hidden' value='${DateAssigned}' />
+        <input name='cases[${index}].chrComment' id='cases_chrComment' type='hidden' value='${comment}'>
+    </li>
+</script>

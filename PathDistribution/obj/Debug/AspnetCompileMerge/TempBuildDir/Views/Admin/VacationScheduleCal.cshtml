@@ -1,63 +1,24 @@
 ﻿@model PathDistribution.Models.VacationSchedules
 
-<table id="offassignments" style="width:95%;padding-top:10px;padding-left:5px;top:0;display:grid;grid-template-areas: 'head-fixed''body-scrollable';" cellspacing="0" cellpadding="0">
-    <thead style="background-color: #B3C8DF;grid-area:head-fixed;">
-        <tr class="text2" style="text-align:center;margin-top:25px;">
-            <th style="min-width:40px;">Week</th>
-            <th style="min-width:115px;">Date</th>
-            @foreach (var item in Model.PathScheduleData)
-            {
-                <th data-path="@item.chrPath" style="text-align: center; min-width: 51px; font-weight: bold;">@item.chrPath</th>
-            }
-        </tr>
-        <tr class="text2" style="text-align:center;margin-top:25px;">
-            <th style="min-width:40px;"></th>
-            <th style="min-width: 115px;">Days Off</th>
-            @foreach (var item in Model.PathScheduleData)
-            {
-                <th data-path="@item.chrPath" style="text-align: center; min-width: 51px;">@item.DaysOff</th>
-            }
-        </tr>
-        <tr class="text2" style="text-align: center; margin-top: 25px;">
-            <th style="min-width:40px;"></th>
-            <th style="min-width: 115px;">Balance</th>
-            @foreach (var item in Model.PathScheduleData)
-            {
-                <th data-path="@item.chrPath" style="text-align: center; min-width: 51px;">@item.Balance</th>
-            }
-        </tr>
-    </thead>
-    <tbody style="height:665px;overflow-y:auto;grid-area:body-scrollable;-ms-overflow-style:none;scrollbar-width:none;">
-        @foreach (var item in Model.PathScheduleDates)
-        {
-            var dtestring = item.dte.ToShortDateString();
-            var dtecolor = item.isHoliday ? "red" : "rgb(54,69,90)";
-            var trcolor = item.isHoliday ? "lightpink" : "transparent";
-            var today = item.dte.Equals(DateTime.Today) ? "today" : "";
-
-            <tr class="text5" style="text-align:center;padding-top:5px;background-color:@trcolor">
-                <td style="text-align:center;min-width:40px;">@Html.DisplayFor(modelItem => item.WeekNum)</td>
-                <td class="@today" style="text-align:right;min-width:115px;padding-right:5px;color:@dtecolor">(@Html.DisplayFor(modelItem => item.WkDay)) @Html.DisplayFor(modelItem => dtestring)</td>
-                @foreach (var subitem in item.OffAssignments)
-                {
-                    var bgcolor = string.Empty;
-
-                    switch (subitem.Item2)
-                    {
-                        case "OFF":
-                            bgcolor = "green";
-                            break;
-                        case "CME":
-                            bgcolor = "purple";
-                            break;
-                        default:
-                            bgcolor = "transparent";
-                            break;
-                    }
-                    bgcolor = item.isHoliday ? "lightpink" : bgcolor;
-                    <td data-path="@Html.DisplayFor(mi => subitem.Item1)" data-off="@Html.DisplayFor(mi => subitem.Item2)" title="@Html.DisplayFor(mi => subitem.Item2)" style="min-width: 50px;border-left: 1px solid rgb(160,160,255); text-align: center;" class="@bgcolor"></td>
-                }
-            </tr>
-        }
-    </tbody>
-</table>
+<div id="offassignments" class="divTable">
+    <div class="divTableHeading text2">
+        <div class="divTableRow">
+            <div class="divTableHead COLONE">Week</div>
+            <div class="divTableHead COLTWO">Date</div>
+            @Html.Partial("VacationScheduleCalHeader1",Model.PathScheduleData)
+        </div>
+        <div class="divTableRow">
+            <div class="divTableHead COLONE">&nbsp;</div>
+            <div class="divTableHead COLTWO">Days Off</div>
+            @Html.Partial("VacationScheduleCalHeader2", Model.PathScheduleData)
+        </div>
+        <div class="divTableRow">
+            <div class="divTableHead COLONE">&nbsp;</div>
+            <div class="divTableHead COLTWO">Balance</div>
+            @Html.Partial("VacationScheduleCalHeader3", Model.PathScheduleData)
+        </div>
+    </div>
+    <div class="divTableBody text5">
+        @Html.Partial("VacationScheduleCalData", Model.PathScheduleDates)
+    </div>
+</div>

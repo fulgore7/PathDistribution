@@ -1,4 +1,5 @@
-﻿@model PathDistribution.Models.ScheduleData
+﻿@using PathDistribution.Helpers
+@model PathDistribution.Models.ScheduleData
 
 @{
     ViewBag.Title = "Schedule";
@@ -33,6 +34,11 @@
         td.ui-datepicker-week-end {
             display: none;
         }
+
+        .disabled {
+            pointer-events: none; /* Prevents interaction */
+            opacity: 0.5; /* Makes it look disabled */
+        }
     </style>
 }
 
@@ -42,6 +48,8 @@
         const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
         function changeDate(dateText, weekpicker) {
+            Updating(true);
+
             var dte = new Date(dateText);
             $(weekpicker).datepicker("setDate", dateText);
             $(weekpicker).val($.datepicker.iso8601Week(dte) + "-" + dte.getFullYear().toString());
@@ -53,21 +61,31 @@
             $("#Monday").text(dtf.format(mon));
             $("#Sunday").text(dtf.format(sun));
 
-            $.when(RefreshPartialView("SCHEDULEWEEK", $(weekpicker).val()),
-                RefreshPartialView("SCHEDULEOFF", $(weekpicker).val()),
-                RefreshPartialView("SCHEDULECOMMENTS", $(weekpicker).val()),
-                RefreshPartialView("SCHEDULEISSUES", $(weekpicker).val()));
+            RefreshPartialView($(weekpicker).val());
+        }
+
+        function Updating(disable) {
+            if (disable) {
+                $("body").css("cursor", "progress");
+                $("#weekprev, #weeknext, #weekpicker").prop('disabled', true);
+                $("#SCHEDULEWEEK, #SCHEDULEISSUES, #SCHEDULEOFF, #SCHEDULECOMMENTS").addClass('disabled');
+            } else {
+                $("#weekprev, #weeknext, #weekpicker").prop('disabled', false);
+                $("#SCHEDULEWEEK, #SCHEDULEISSUES, #SCHEDULEOFF, #SCHEDULECOMMENTS").removeClass('disabled');
+                $("body").css("cursor", "default");
+            }
         }
 
         $(function () {
-
             $("#weekprev").on("click", function () {
+                Updating(true);
                 var dte = new Date($("#Monday").text());
                 dte.setDate(dte.getDate() - 7);
                 changeDate(dte, $("#weekpicker"));
             });
 
             $("#weeknext").on("click", function () {
+                Updating(true);
                 var dte = new Date($("#Monday").text());
                 dte.setDate(dte.getDate() + 7);
                 changeDate(dte, $("#weekpicker"));
@@ -93,21 +111,7 @@
                     $(this).datepicker("setDate", new Date($("#Monday").text()));
                 },
                 onSelect: function (dateText, inst) {
-                    var dte = new Date(dateText);
-                    $("#weekpicker").datepicker("setDate", dateText);
-                    inst.input.val($.datepicker.iso8601Week(dte) + "-" + dte.getFullYear().toString());
-
-                    var mon = new Date(dte.setDate(dte.getDate() - dte.getDay() + 1));
-                    var sun = new Date(dte.setDate(dte.getDate() - dte.getDay() + 7));
-
-                    const dtf = new Intl.DateTimeFormat("en-US");
-                    $("#Monday").text(dtf.format(mon));
-                    $("#Sunday").text(dtf.format(sun));
-
-                    $.when(RefreshPartialView("SCHEDULEWEEK", $(this).val()),
-                           RefreshPartialView("SCHEDULEOFF", $(this).val()),
-                           RefreshPartialView("SCHEDULECOMMENTS", $(this).val()),
-                           RefreshPartialView("SCHEDULEISSUES", $(this).val()));
+                    changeDate(dateText, "weekpicker");
                 }
             }).val($.datepicker.iso8601Week(new Date()) + "-" + new Date().getFullYear().toString());
 
@@ -115,7 +119,7 @@
                 .on('mousemove', '.ui-datepicker-calendar tr', function () { $(this).find('td a').addClass('ui-state-hover'); })
                 .on('mouseleave', '.ui-datepicker-calendar tr', function () { $(this).find('td a').removeClass('ui-state-hover'); });
 
-            $.when(RefreshPathAssList(),RefreshPathOffList(),RefreshComments());
+            $.when(RefreshPathAssList(), RefreshPathOffList(), RefreshComments());
 
             var dte = new Date();
             var mon = new Date(dte.setDate(dte.getDate() - dte.getDay() + 1));
@@ -124,7 +128,158 @@
             const dtf = new Intl.DateTimeFormat("en-US");
             $("#Monday").text(dtf.format(mon));
             $("#Sunday").text(dtf.format(sun));
+
+            var dialog = $("#ptoModal").dialog({
+                autoOpen: false,
+                height: 250,
+                width: 350,
+                modal: true,
+                resizable: false,
+                draggable: false,
+                buttons: {
+                    "Close": function () {
+                        if ($("#StartDate").val()
+                            || $("#EndDate").val()
+                            || $("#offType").val()
+                            || $("#ptoReason").val()) {
+                            if (confirm("Are you sure you wish to cancel this PTO Request.")) {
+                                dialog.dialog("close");
+                            }
+                        } else {
+                            dialog.dialog("close");
+                        }
+                    },
+                    "Apply": function () {
+                        var valid = true;
+
+                        $("#StartDate").next("span").remove();
+                        $("#EndDate").next("span").remove();
+                        $("#offType").next("span").remove();
+                        $("#ptoReason").next("span").remove();
+
+                        if (!$("#StartDate").val()
+                            || ($("#StartDate").val() > $("#EndDate").val() && $("#EndDate").val())) {
+                            $("#StartDate").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                            setTimeout(function () {
+                                $("#StartDate").removeClass("ui-state-error", 1500);
+                            }, 500);
+                            valid = false;
+                        }
+                        if (!$("#EndDate").val()
+                            || ($("#StartDate").val() < $("#EndDate").val() && $("#StartDate").val())) {
+                            $("#EndDate").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                            setTimeout(function () {
+                                $("#EndDate").removeClass("ui-state-error", 1500);
+                            }, 500);
+                            valid = false;
+                        }
+                        if (!$("#offType").val()) {
+                            $("#offType").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                            setTimeout(function () {
+                                $("#offType").removeClass("ui-state-error", 1500);
+                            }, 500);
+                            valid = false;
+                        }
+                        if (!$("#ptoReason").val()) {
+                            $("#ptoReason").addClass("ui-state-error").after('<span class="required-asterisk">  *</span>');
+                            setTimeout(function () {
+                                $("#ptoReason").removeClass("ui-state-error", 1500);
+                            }, 500);
+                            valid = false;
+                        }
+                        if (valid) {
+                            var data = {};
+                            data["pkPTO"] = 0;
+                            data["chrPath"] = "@System.Web.HttpContext.Current.CopathAbbr()";
+                            data["dteStart"] = $("#StartDate").val();
+                            data["dteEnd"] = $("#EndDate").val();
+                            data["intStatus"] = 0;
+                            data["chrAbbr"] = $("#offType").val();
+                            data["chrStatusChangedBy"] = "@System.Web.HttpContext.Current.User.Identity.Name";
+                            data["dteStatusChanged"] = Date.now();
+                            data["chrComments"] = $("#ptoReason").val();
+
+                            $.ajax({
+                                url: '@Url.Action("UpsertPTO", "Admin")',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify(data),
+                                async: true,
+                                processData: false,
+                                cache: false
+                            }).done(function (result) {
+                                if (result.Status == "Success")
+                                {
+                                    dialog.dialog("close");
+                                }
+                                else {
+                                    alert("Oops");
+                                }
+                            });
+                        }
+                        return valid;
+                    }
+                },
+                close: function () {
+                    ResetPTO();
+                }
+            });
+
+            $("#ptoRequest").on("click", function () {
+                ResetPTO();
+                dialog.dialog("open");
+            });
         });
+
+        function ResetPTO() {
+            $("#chrPath").val('@System.Web.HttpContext.Current.CopathAbbr()');
+            $("#path").hide();
+            $("#StartDate").val('');
+            $("#EndDate").val('');
+            $("#offType").val('');
+            $("#ptoReason").val('');
+
+            $("#StartDate span").remove();
+            $("#EndDate span").remove();
+            $("#ptoReason span").remove();
+
+            var from = $("#StartDate").datepicker({
+                minDate: 0,
+                defaultDate: "+1w",
+                showWeek: true,
+                changeMonth: true,
+                changeYear: true,
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                firstDay: 1,
+            }).on("change", function () {
+                to.datepicker("option", "minDate", getDate(this));
+            }),
+                to = $("#EndDate").datepicker({
+                    minDate: 0,
+                    defaultDate: "+1w",
+                    showWeek: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    firstDay: 1,
+                }).on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+        }
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate("mm/dd/yy", element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
 
         function RefreshPathAssList() {
             $('#WECALL').on('change', function () {
@@ -338,10 +493,7 @@
                 cache: false
             }).done(function (result) {
                 var dte = $("#weekpicker").val();
-                $.when(RefreshPartialView("SCHEDULEWEEK", dte),
-                       RefreshPartialView("SCHEDULEOFF", dte),
-                       RefreshPartialView("SCHEDULECOMMENTS", dte),
-                       RefreshPartialView("SCHEDULEISSUES", dte));
+                RefreshPartialView(dte);
             });
         }
 
@@ -362,22 +514,17 @@
                 cache: false
             }).done(function (result) {
                 var dte = $("#weekpicker").val();
-                $.when(RefreshPartialView("SCHEDULEWEEK", dte),
-                       RefreshPartialView("SCHEDULEOFF", dte),
-                    RefreshPartialView("SCHEDULECOMMENTS", dte),
-
-                    RefreshPartialView("SCHEDULEISSUES", dte));
+                RefreshPartialView(dte);
             });
         }
 
-        function RefreshPartialView(pv, dte) {
+        function RefreshPartialView(dte) {
             var map = {};
-            map["partialView"] = pv;
             map["weekyear"] = dte;
 
             $.ajax({
                 url: '@Url.Action("RefreshSchedulePartial", "Admin")',
-                dataType: "html",
+                dataType: "json",
                 type: "POST",
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(map),
@@ -386,81 +533,49 @@
                 cache: false
             }).done(function (result) {
 
-                switch (pv) {
-                    case "SCHEDULEWEEK":
-                        var oldrows = $("#" + pv + " tbody").children();
+                $.when(RefreshTable("SCHEDULEWEEK", result.sw),
+                    RefreshTable("SCHEDULEOFF", result.so),
+                    $("#SCHEDULECOMMENTS").html(result.sc),
+                    $("#SCHEDULEISSUES").html(result.si)
+                ).then(function () {
+                    RefreshPathAssList();
+                    RefreshPathOffList();
+                    RefreshComments();
+                });
 
-                        $("#" + pv).html(result);
+                Updating(false);
+            });
+        }
 
-                        var newrows = $("#" + pv + " tbody").children();
+        function RefreshTable(pv, result) {
+            var oldrows = $("#" + pv + " tbody").children();
 
-                        $(newrows).each(function (rn, newrow) {
+            $("#" + pv).html(result);
 
-                            var newcells = $(newrow).children();
+            var newrows = $("#" + pv + " tbody").children();
 
-                            var oldrow = $(oldrows).eq(rn);
-                            var oldcells = $(oldrow).children();
+            $(newrows).each(function (rn, newrow) {
 
-                            newcells.each(function (cn, newcell) {
+                var newcells = $(newrow).children();
 
-                                var oldcell = $(oldcells).eq(cn);
+                var oldrow = $(oldrows).eq(rn);
+                var oldcells = $(oldrow).children();
 
-                                if ($(newcell).has("input")) {
+                newcells.each(function (cn, newcell) {
 
-                                    var oldtxt = $(oldcell).find("input");
-                                    var newtxt = $(newcell).find("input");
+                    var oldcell = $(oldcells).eq(cn);
 
-                                    if (oldtxt.val() !== newtxt.val()) {
-                                        $(newtxt).animate({ backgroundColor: "#EFE7DC" }, 2000)
-                                            .animate({ backgroundColor: "#fff" }, 2000);
-                                    }
-                                }
-                            });
-                        });
+                    if ($(newcell).has("input")) {
 
-                        RefreshPathAssList();
-                        break;
-                    case "SCHEDULEOFF":
-                        var oldrows = $("#" + pv + " tbody").children();
+                        var oldtxt = $(oldcell).find("input");
+                        var newtxt = $(newcell).find("input");
 
-                        $("#" + pv).html(result);
-
-                        var newrows = $("#" + pv + " tbody").children();
-
-                        $(newrows).each(function (rn, newrow) {
-
-                            var newcells = $(newrow).children();
-
-                            var oldrow = $(oldrows).eq(rn);
-                            var oldcells = $(oldrow).children();
-
-                            newcells.each(function (cn, newcell) {
-
-                                var oldcell = $(oldcells).eq(cn);
-
-                                if ($(newcell).has("input")) {
-
-                                    var oldtxt = $(oldcell).find("input");
-                                    var newtxt = $(newcell).find("input");
-
-                                    if (oldtxt.val() !== newtxt.val()) {
-                                        $(newtxt).animate({ backgroundColor: "#EFE7DC" }, 2000)
-                                            .animate({ backgroundColor: "#fff" }, 2000);
-                                    }
-                                }
-                            });
-                        });
-                        RefreshPathOffList();
-                        break;
-                    case "SCHEDULECOMMENTS":
-                        $("#" + pv).html(result);
-                        RefreshComments();
-                        break;
-                    case "SCHEDULEISSUES":
-                        $("#" + pv).html(result);
-                        break;
-                    default:
-                }
+                        if (oldtxt.val() !== newtxt.val()) {
+                            $(newtxt).animate({ backgroundColor: "#EFE7DC" }, 2000)
+                                .animate({ backgroundColor: "#fff" }, 2000);
+                        }
+                    }
+                });
             });
         }
     </script>
@@ -468,12 +583,13 @@
 
 @section Left
 {
-    @*<div style="padding-top:10px;padding-bottom:5px;font-weight:bold">Print Schedule</div>
-        <div style="display:flex;justify-content:center;align-items:center;width:100%;gap:5px;">
-            <button>Current</button>
+    <div style="padding-top:10px;padding-bottom:5px;font-weight:bold"></div>
+    <div style="display:flex;justify-content:center;align-items:center;width:100%;gap:5px;">
+        <button id="ptoRequest">Request PTO</button>
+        @*<button>Current</button>
             <button>Multiple</button>
-            <button>Notify Couriers</button>
-        </div>*@
+            <button>Notify Couriers</button>*@
+    </div>
     <div style="padding-top:25px;padding-bottom:5px;font-weight:bold">Filter</div>
     <div style="display:flex;align-items:center;width:100%;padding-left:5px">
         <span class="text7" style="padding-right:10px;">Week/Year</span>
@@ -497,7 +613,6 @@
     <div id="SCHEDULEISSUES">
         @Html.Partial("ScheduleIssues", Model.Issues)
     </div>
-
 }
 
 <div id="content">
@@ -514,3 +629,5 @@
         </div>
     </div>
 </div>
+
+@Html.Partial("PTO", Model.OffTypes)

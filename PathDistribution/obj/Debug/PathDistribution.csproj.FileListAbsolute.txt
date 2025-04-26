@@ -1078,10 +1078,6 @@ Z:\Development 202307\2019\PathDistribution\PathDistribution\bin\Microsoft.Share
 \\spnas2\data\Users\JWebb\Development 202307\2019\PathDistribution\PathDistribution\obj\Debug\PathDistribution.dll
 \\spnas2\data\Users\JWebb\Development 202307\2019\PathDistribution\PathDistribution\obj\Debug\PathDistribution.pdb
 Z:\Development 202307\2019\PathDistribution\PathDistribution\bin\WebActivatorEx.dll
-C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.csproj.AssemblyReference.cache
-C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.csproj.CoreCompileInputs.cache
-C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.dll
-C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.pdb
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\PathDistribution.dll.config
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\PathDistribution.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\PathDistribution.pdb
@@ -1347,4 +1343,8 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDi
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\WebMarkupMin.Core.xml
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\de\PdfSharp.resources.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\bin\de\PdfSharp.Charting.resources.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.csproj.CoreCompileInputs.cache
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDist.15B317E8.Up2Date
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\PathDistribution\obj\Debug\PathDistribution.pdb

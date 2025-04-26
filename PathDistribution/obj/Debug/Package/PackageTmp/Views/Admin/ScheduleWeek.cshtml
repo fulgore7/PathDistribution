@@ -1,0 +1,49 @@
+﻿@using PathDistribution.Helpers
+@model PathDistribution.Models.ScheduleData
+
+@{ 
+    bool isAdmin = System.Web.HttpContext.Current.IsAdmin();
+}
+<table id="schedule" style="padding-left:5px;padding-top:15px" cellspacing="3" cellpadding="0">
+    <thead class="text2" style="text-align:center;margin-top:25px;">
+        <tr>
+            <td></td>
+            @foreach (var abbr in Model.Assignments)
+            {
+                <td style="font: 11px arial;width:35px;font-weight:bold">@abbr</td>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.WeekDays)
+        {
+            <tr class="text11" style="text-align:center;" data-id="@item.Item1.ToShortDateString()">
+                <td>@Html.DisplayFor(mi => item.Item2)</td>
+                @foreach (var subitem in Model.Schedules.Where(y => y.dteScheduleDate == item.Item1))
+                {
+                    <td>
+                        @if (isAdmin)
+                        {
+                            @Html.TextBoxFor(mi => subitem.chrPath, new { @style = "width:35px;text-align:center;caret-color: transparent;", @class = "PathAssList", @data_abbr = subitem.chrAbbr, @data_assigned = item.Item1.ToShortDateString(), @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(mi => subitem.chrPath, new { @style = "width:35px;text-align:center;caret-color: transparent;pointer-events:none", @class = "PathAssListRO", @readonly = "readonly" })
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="WKCALL" style="padding-top:15px;padding-left:25px">
+    <label class="text7">Weekend Call</label>
+    @if (isAdmin)
+    {
+        @Html.DropDownList("WECALL", Model.WeekEnd, new { @id = "WECALL" })
+    }
+    else
+    {
+        @Html.TextBox("WECALL",Model.WeekEnd.FirstOrDefault(x => x.Selected).Value, new { @style = "width:35px;text-align:center;caret-color: transparent;pointer-events:none", @readonly = "readonly" })
+    }
+</div>
