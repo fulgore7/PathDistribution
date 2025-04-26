@@ -9,10 +9,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/bundles/1")
-    @Scripts.Render("~/bundles/d")
-    @*@RenderSection("styles", false)*@
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/1")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/d")
 </head>
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
@@ -41,9 +41,9 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/a")
-    @Scripts.Render("~/bundles/b")
-    @Scripts.Render("~/bundles/c")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/a")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/b")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/c")
     @RenderSection("scripts", false)
 </body>
 </html>

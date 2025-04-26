@@ -292,6 +292,8 @@ namespace PathDistribution.Models.DAL
                 d.PTORequests = ptoRequests; // Assign the PTORequests to each PathScheduleDatesCal object
                 d.Dates = dates.FirstOrDefault(); // Assign the first tuple from the list to the Dates property
             });
+
+            data=MergeConsecutiveEntries(data);
             return data;
         }
         public VacationSchedules GetVacationSchedules(DateTime? start, DateTime? end)
@@ -409,6 +411,30 @@ namespace PathDistribution.Models.DAL
                         .AddParameter("@chrUser", user, System.Data.SqlDbType.VarChar, 50)
                         .ExecuteScalar<string>();
                 
+        }
+        public List<PathScheduleDatesCal> MergeConsecutiveEntries(List<PathScheduleDatesCal> data)
+        {
+            for (int i = 0; i < data.Count - 1; i++)
+            {
+                var current = data[i];
+                var next = data[i + 1];
+
+                // Check if EndDate is a Friday and next StartDate is the following Monday
+                if (current.EndDate.DayOfWeek == DayOfWeek.Friday &&
+                    next.StartDate == current.EndDate.AddDays(3) &&
+                    current.chrPath == next.chrPath)
+                {
+                    // Update EndDate of the current entry
+                    current.EndDate = next.EndDate;
+
+                    // Remove the next entry
+                    data.RemoveAt(i + 1);
+
+                    // Decrement index to recheck the current position after removal
+                    i--;
+                }
+            }
+            return data;
         }
     }
 }

@@ -22,17 +22,17 @@ namespace PathDistribution.Controllers
 
             AdminDAL admin = new AdminDAL();
 
-            admin.UpsertPTO(pkPTO, chrPath, dteStart, dteEnd, intStatus, chrAbbr, chrStatusChangedBy.Replace("SARAPATH",""), dteStatusChanged, chrComments);
+            admin.UpsertPTO(pkPTO, chrPath, dteStart, dteEnd, intStatus, chrAbbr, chrStatusChangedBy.Replace("SARAPATH", ""), dteStatusChanged, chrComments);
 
             EmailBuilder<EmailGenerator> email = new EmailBuilder<EmailGenerator>();
-            string user = UserPrincipal.Current.EmailAddress;
-            string body = body = $"Requested by: {chrPath}\nStart: {dteStart.ToShortDateString()}\nEnd: {dteEnd.ToShortDateString()}\nOff Type: {chrAbbr}\nReason: {chrComments}";
+            string user = UserPrincipal.Current?.EmailAddress ?? "mcoleman@sarapath.com";
+            string body = $"Requested by: {chrPath}\nStart: {dteStart.ToShortDateString()}\nEnd: {dteEnd.ToShortDateString()}\nOff Type: {chrAbbr}\nReason: {chrComments}";
             string subject = string.Empty;
 #if DEBUG
             email.AddTo(user);
 #else
-            email.AddTo(user);
-            email.AddTo("ExecManagement@sarapath.com");
+                email.AddTo(user);
+                email.AddTo("ExecManagement@sarapath.com");
 #endif
             switch (intStatus)
             {

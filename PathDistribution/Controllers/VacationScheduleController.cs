@@ -1,5 +1,7 @@
-﻿using PathDistribution.Models.DAL;
+﻿using PathDistribution.Models;
+using PathDistribution.Models.DAL;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,17 +24,17 @@ namespace PathDistribution.Controllers
         }
 
         // GET: Admin
-        public ActionResult RefreshVacationScheduleCal(DateTime dteStart, DateTime dteEnd)
+        public ActionResult RefreshVacationSchedule(DateTime dteStart, DateTime dteEnd)
         {
             AdminDAL adminDAL = new AdminDAL();
 
-            return PartialView("VacationScheduleCal2",adminDAL.GetVacationSchedules(dteStart, dteEnd).PathScheduleData);
+            return PartialView("VacationScheduleCal",adminDAL.GetVacationSchedules(dteStart, dteEnd).PathScheduleData);
         }
-        public ActionResult RefreshVacationScheduleCal2(DateTime dteStart, DateTime dteEnd)
+        public JsonResult RefreshVacationScheduleCal(DateTime dteStart, DateTime dteEnd)
         {
             AdminDAL adminDAL = new AdminDAL();
 
-           return PartialView("VacationScheduleCal2",adminDAL.GetVacationSchedulesCal(dteStart, dteEnd));
+           return Json(new { error = true, message = PartialView("VacationScheduleCal2", adminDAL.GetVacationSchedulesCal(dteStart, dteEnd))});
         }
 
     }

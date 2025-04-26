@@ -1,0 +1,374 @@
+﻿@model PathDistribution.Models.Report
+
+@{
+    Layout = "~/Views/Shared/_LayoutSched.cshtml";
+}
+
+@section styles
+{
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/2")
+    <style type="text/css">
+        .weekstartdatetime, .weekenddatetime {
+            width: 90px;
+            text-align: center;
+        }
+
+        div.ui-multiselect-menu {
+            background-color: white;
+        }
+
+        ul.ui-multiselect-checkboxes li {
+            background-image: none;
+            padding: 0;
+        }
+
+        ul.ui-multiselect-single li {
+            background-image: none;
+            padding: 0;
+        }
+
+        ul.ui-helper-reset li {
+            background-image: none;
+            padding: 0;
+        }
+
+        label.ui-multiselect-filter-label {
+            font: 11px/14px arial;
+            color: #9e7b48;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+
+        div.ui-multiselect-filter {
+            padding-bottom: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #offassignments tr:hover {
+            box-shadow: 0 0 17px gray;
+            position: relative;
+            z-index: 1;
+        }
+
+        tbody::-webkit-scrollbar {
+            display: none;
+        }
+
+        .box {
+            height: 10px;
+            width: 10px;
+            display: inline-block;
+            margin: 0 5px 0 5px;
+        }
+
+        .ui-widget-content {
+            border: 1px solid #dddddd;
+            background: #ffffff;
+            color: #333333;
+        }
+
+        th.ui-datepicker-week-end,
+        td.ui-datepicker-week-end {
+            display: none;
+        }
+
+        .disabled {
+            -webkit-filter: saturate(0%);
+            filter: saturate(0%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/e")
+<script type="text/javascript" language="javascript">
+
+    $(function () {
+        $("select.yeardatetime").on("change", function () {
+            $("#content").addClass("disabled");
+
+            UpdateReport();
+
+            $("#content").removeClass("disabled");
+        });
+
+        $("input.weekstartdatetime, input.weekenddatetime").datepicker({
+            showWeek: true,
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            firstDay: 1,
+            beforeShowDay: function (date) {
+                setTimeout(function () {
+                    $("#ui-datepicker-div").find(".ui-state-highlight").removeClass().addClass("ui-state-default");
+                    $("#ui-datepicker-div").find(".ui-datepicker-today").removeClass();
+                }, 100);
+                return [true, '', ''];
+            },
+            onSelect: function (dateText, inst) {
+                $("#content").addClass("disabled");
+
+                var dte = new Date(dateText);
+                $(this).datepicker("setDate", dateText);
+                inst.input.val($.datepicker.iso8601Week(dte) + "-" + dte.getFullYear().toString());
+
+                UpdateReport();
+
+                $("#content").removeClass("disabled");
+            }
+        }).val(function (index, value) {
+            var val = new Date(value);
+            var dte = $.datepicker.iso8601Week(val) + "-" + val.getFullYear().toString();
+            return dte;
+        });
+
+        $("#PathFilter").multiselect({
+            buttonWidth: "160px",
+            selectedText: "",
+            noneSelectedText: "",
+            header: ['checkAll', 'uncheckAll'],
+            linkInfo: {
+                checkAll: { text: "All" },
+                uncheckAll: { text: "None" }
+            },
+            click: function (e, ui) {
+                UpdateReport();
+            },
+            checkAll: function () {
+                UpdateReport();
+            },
+            uncheckAll: function () {
+                UpdateReport();
+            }
+        }).multiselectfilter({
+            width: "100px",
+            placeholder: ""
+        });
+
+        $("select.PathList").multiselect({
+            buttonWidth: "160px",
+            selectedText: "",
+            noneSelectedText: "",
+            header: ['checkAll', 'uncheckAll'],
+            linkInfo: {
+                checkAll: { text: "All" },
+                uncheckAll: { text: "None" }
+            },
+            click: function (e, ui) {
+                UpdateReport();
+            },
+            checkAll: function () {
+                UpdateReport();
+            },
+            uncheckAll: function () {
+                UpdateReport();
+            }
+        }).multiselectfilter({
+            width: "100px",
+            placeholder: ""
+        });
+
+        $("li.ui-multiselect-close").remove();
+
+        $("#Print").on("click", function () {
+            var frame = document.getElementById("pdf");
+            frame.contentWindow.focus();
+            frame.contentWindow.print();
+        });
+
+        $("#PostSP").on("click", function () {
+            var map = GetParameters();
+
+            $.ajax({
+                url: '@Url.Action("PostSP", "Admin")',
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'text',
+                data: JSON.stringify(map),
+                async: true,
+                processData: false,
+                cache: false
+            }).done(function (result) {
+                if (result == "success") {
+                    alert("The report has successfully been uploaded to SharePoint.")
+                } else {
+                    alert("The report has failed to be uploaded to SharePoint.")
+                }
+            });
+        });
+
+        $("#EmailCouriers").on("click", function () {
+
+            if (confirm("Do you wish to notify Couriers about the update?")) {
+                $.ajax({
+                    url: '@Url.Action("EmailCouriers", "Admin")',
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'text',
+                    data: JSON.stringify(map),
+                    async: true,
+                    processData: false,
+                    cache: false
+                });
+            }
+        });
+    });
+
+    function GetParameters() {
+        var map = {};
+        map["id"] = @Convert.ToInt32(Enum.Parse(typeof(PathDistribution.Models.ReportTypes), Model.ReportType.ToString()))
+        map["parameters"] = new Array();
+
+        @foreach (var x in Model.ReportParameters)
+        {
+            switch (x.Type)
+            {
+                case PathDistribution.Models.ReportParameterTypes.WeekDateTime:
+                    @:var wkyr = $("#@x.Name").val().toString().split("-");
+                    @:var dte = getDateOfIsoWeek(wkyr[0], wkyr[1]);
+                    @:map["parameters"].push({ Name: '@x.Name', Type: @Convert.ToInt32(Enum.Parse(typeof(PathDistribution.Models.ReportParameterTypes), x.Type.ToString())), MultiValue: @x.MultiValue.ToString().ToLower(), Prompt: '@x.Prompt', DataType: @Convert.ToInt32(Enum.Parse(typeof(System.Data.SqlDbType), x.DataType.ToString())), MaxLength: @x.MaxLength, Default: dte });
+                    break;
+                case PathDistribution.Models.ReportParameterTypes.DateTime:
+                    @:map["parameters"].push({ Name: '@x.Name', Type: @Convert.ToInt32(Enum.Parse(typeof(PathDistribution.Models.ReportParameterTypes), x.Type.ToString())), MultiValue: @x.MultiValue.ToString().ToLower(), Prompt: '@x.Prompt', DataType: @Convert.ToInt32(Enum.Parse(typeof(System.Data.SqlDbType), x.DataType.ToString())), MaxLength: @x.MaxLength, Default: new Date($("#@x.Name").val()) });
+                    break;
+                case PathDistribution.Models.ReportParameterTypes.Year:
+                    @:map["parameters"].push({ Name: '@x.Name', Type: @Convert.ToInt32(Enum.Parse(typeof(PathDistribution.Models.ReportParameterTypes), x.Type.ToString())), MultiValue: @x.MultiValue.ToString().ToLower(), Prompt: '@x.Prompt', DataType: @Convert.ToInt32(Enum.Parse(typeof(System.Data.SqlDbType), x.DataType.ToString())), MaxLength: @x.MaxLength, Default: $("#@x.Name").val() });
+                    break;
+        case PathDistribution.Models.ReportParameterTypes.Pathologist:
+                    @:var selectedValues = $("#@x.Name").multiselect("getChecked").map(function() {
+                    @:                         return $(this).val();
+                    @:                        }).get().join(",");
+                    @:map["parameters"].push({ Name: '@x.Name', Type: @Convert.ToInt32(Enum.Parse(typeof(PathDistribution.Models.ReportParameterTypes),x.Type.ToString())), MultiValue: @x.MultiValue.ToString().ToLower(), Prompt: '@x.Prompt', DataType: @Convert.ToInt32(Enum.Parse(typeof(System.Data.SqlDbType),x.DataType.ToString())), MaxLength: @x.MaxLength, Default: selectedValues });
+                    break;
+            }
+        }
+
+        return map;
+        }
+
+    function UpdateReport() {
+        var map = GetParameters();
+
+        $.ajax({
+            url: '@Url.Action("GetReport", "Admin")',
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'text',
+            data: JSON.stringify(map),
+            async: true,
+            processData: false,
+            cache: false
+        }).done(function (result) {
+            var atobData = window.atob(result);
+            var num = new Array(atobData.length);
+            for (var i = 0; i < atobData.length; i++) {
+                num[i] = atobData.charCodeAt(i);
+            }
+            var pdfData = new Uint8Array(num);
+
+            blob = new Blob([pdfData], { type: 'application/pdf;base64' });
+            //var blob = new Blob([pdfData], { type: "application/octetstream" });
+            var url = URL.createObjectURL(blob);
+            $("#pdf").attr("src", url);
+            $("#report").attr("src", url + "#view=FitH&toolbar=0&statusbar=0&messages=0&navpanes=0");
+        });
+        }
+
+    function getDateOfIsoWeek(week, year) {
+        week = parseFloat(week);
+        year = parseFloat(year);
+
+        if (week < 1 || week > 53) {
+            throw new RangeError("ISO 8601 weeks are numbered from 1 to 53");
+        } else if (!Number.isInteger(week)) {
+            throw new TypeError("Week must be an integer");
+        } else if (!Number.isInteger(year)) {
+            throw new TypeError("Year must be an integer");
+        }
+
+        const simple = new Date(year, 0, 1 + (week - 1) * 7);
+        const dayOfWeek = simple.getDay();
+        const isoWeekStart = simple;
+
+        // Get the Monday past, and add a week if the day was
+        // Friday, Saturday or Sunday.
+
+        isoWeekStart.setDate(simple.getDate() - dayOfWeek + 1);
+        if (dayOfWeek > 4) {
+            isoWeekStart.setDate(isoWeekStart.getDate() + 7);
+        }
+
+        // The latest possible ISO week starts on December 28 of the current year.
+        if (isoWeekStart.getFullYear() > year ||
+            (isoWeekStart.getFullYear() == year &&
+                isoWeekStart.getMonth() == 11 &&
+                isoWeekStart.getDate() > 28)) {
+            throw new RangeError(`${year} has no ISO week ${week}`);
+        }
+
+        return isoWeekStart;
+    }
+</script>
+}
+
+@section Left
+{
+    <div style="display:flex;justify-content:center;align-items:center;width:100%;gap:5px;">
+        <button id="Print" data-name="@Model.ReportName">Print</button>
+        @if (Model.PostSharepoint)
+        {
+            <button id="PostSP">Post to SharePoint</button>
+        }
+        @if (Model.NotifyCouriers)
+        {
+            <button id="EmailCouriers">Notify Couriers</button>
+        }
+    </div>
+    @if (Model.ReportParameters.Count > 0)
+    {
+        <table id="schedulefilter" style="width:95%">
+            <tr>
+                <td colspan="2" style="font-weight:bold">Filter</td>
+            </tr>
+
+            @foreach (var x in Model.ReportParameters)
+            {
+                <tr>
+                    <td class="text7">@x.Prompt</td>
+                    <td>
+                        @switch (x.Type)
+                        {
+                            case PathDistribution.Models.ReportParameterTypes.WeekDateTime:
+                                <input id="@x.Name" name="@x.Name" class="weekstartdatetime" value="@x.Default" />
+                                break;
+                            case PathDistribution.Models.ReportParameterTypes.DateTime:
+                                <input id="@x.Name" name="@x.Name" class="weekenddatetime" value="@x.Default" />
+                                break;
+                            case PathDistribution.Models.ReportParameterTypes.Year:
+                                @Html.DropDownList(x.Name, Enumerable.Range(2022, (DateTime.Now.Year - 2022) + 2).Select(y => new SelectListItem() { Value = y.ToString(), Text = y.ToString(), Selected = y.Equals(DateTime.Today.Year) }), new
+                                {
+                                    @id = x.Name,@*multiple = "true",*@@class = "yeardatetime"
+})
+                                break;
+                            case PathDistribution.Models.ReportParameterTypes.Pathologist:
+                                @Html.DropDownList(x.Name, Model.Paths.Select(y => new SelectListItem() { Value = y.chrCopathAbbr, Text = y.chrCopathAbbr, Selected = x.Default.Contains(y.chrCopathAbbr) }), new { @id = x.Name, multiple = x.MultiValue.ToString().ToLower(), @class = "PathList" })
+                                @*@Html.DropDownList("PathFilter", Model.Paths.Select(y => new SelectListItem() { Value = y.chrCopathAbbr, Text = y.chrCopathAbbr, Selected = true }), new { @id = "PathFilter", multiple = "true", @class="Test" })*@
+                                break;
+                        }
+                    </td>
+                    </tr>
+                }
+        </table>
+    }
+}
+<div id="content">
+    <iframe id="pdf" hidden src="@Url.Action("GetReport","Admin", new { id = Model.ReportType })" width="1px" height="1px" style="position:absolute;left:-9999px"></iframe>
+    <embed id="report" src="@Url.Action("GetReport", "Admin", new { id = Model.ReportType })#view=FitH&toolbar=0&statusbar=0&messages=0&navpanes=0" width="100%" height="725px" type="application/pdf"></embed>
+</div>

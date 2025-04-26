@@ -73,6 +73,13 @@ a:focus {
     margin: 0 auto 0;
     overflow: hidden;
 }
+#mainsched {
+    background: no-repeat 0 0 url(/Content/img/leftbgsched.jpg);
+    /*width:1176px;*/
+    width: 960px;
+    margin: 0 auto 0;
+    overflow: hidden;
+}
 
 #left{
 	width:177px;
@@ -601,6 +608,12 @@ color: #8D7045;
 .text10 {
     font: 9px/9px Arial;
     color: #466b95;
+    text-decoration: none;
+}
+
+.text11 {
+    font: 11px/11px Arial;
+    color: #36455a;
     text-decoration: none;
 }
 

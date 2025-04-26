@@ -1,0 +1,153 @@
+﻿@using System.Web.Optimization
+@using PathDistribution.Helpers
+
+@{
+    Layout = null;
+    bool isAdmin = System.Web.HttpContext.Current.IsAdmin();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <title>Pathologist Schedule - @ViewBag.Title</title>
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/3")
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/Content/fontawesome")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/d")
+    @RenderSection("styles", false)
+
+    <style>
+        .PTOClass {
+            /*display: none;*/
+            animation: blink 1s infinite;
+            color:red!important;
+        }
+
+        @@keyframes blink {
+            0% {
+                opacity: 1.0;
+            }
+
+            50% {
+                opacity: 0.0;
+            }
+
+            100% {
+                opacity: 1.0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="~/Content/img/logo.gif" alt="sarapath" width="225" height="116" />
+        <span class="AppTitle">Pathologist Schedule</span>
+        <div class="navmenu">
+            <nav>
+                <ul>
+                    <li class="PTOClass" id="ptoClass">@Html.ActionLink("PTO Requested", "VacationSchedule", "Admin", new { @style = "color:red !important" })</li>
+                    <li>@Html.ActionLink("Schedule", "Schedule", "Admin")</li>
+                    <li>
+                        <a>Pathologists</a>
+                        <ul>
+                            @if (isAdmin)
+                            {
+                                <li>@Html.ActionLink("Paths", "Pathologists", "Admin")</li>
+                                <li>@Html.ActionLink("Eligibility", "Eligibility", "Admin")</li>
+                            }
+                            <li>@Html.ActionLink("Vacation Balance", "VacationBalances", "Admin")</li>
+                            <li>@Html.ActionLink("Vacation Schedule", "VacationSchedule", "Admin")</li>
+                        </ul>
+                    </li>
+                    @if (isAdmin)
+                    {
+                        <li>
+                            <a>Admin</a>
+                            <ul>
+                                <li>@Html.ActionLink("Activities", "Assignments", "Admin")</li>
+                                <li>@Html.ActionLink("Activity Conflicts", "AssignmentConflicts", "Admin")</li>
+                                <li>@Html.ActionLink("Canned Comments", "CannedComments", "Admin")</li>
+                            </ul>
+                        </li>
+                    }
+                    <li>
+                        <a>Reports</a>
+                        <ul>
+                            @if (isAdmin)
+                            {
+                                <li>@Html.ActionLink("Assignment Totals", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.AssignmentTotals }, null)</li>
+                                <li>@Html.ActionLink("Weekend Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WeekendCallSched }, null)</li>
+                                <li>@Html.ActionLink("Call Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.CallSched }, null)</li>
+                            }
+                            <li>@Html.ActionLink("Work Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.WorkSched }, null)</li>
+                            <li>@Html.ActionLink("Path Schedule", "Reports", "Admin", new { id = (int)PathDistribution.Models.ReportTypes.PathSched }, null)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="sectionleft">
+            <div class="title">@ViewBag.Title</div>
+            <div class="scheduletab">
+                <div class="scheduletab-items" style="margin-top:4px;">
+                    @RenderSection("Left", false)
+                </div>
+            </div>
+        </section>
+        <section class="sectionright">
+            @RenderBody()
+        </section>
+    </main>
+    <footer>
+        <div>
+            Copyright &copy; @DateTime.Now.Year SaraPath Diagnostics&reg;<br />
+            SaraPath Diagnostics&reg;, 2001 Webber St. Sarasota, FL 34239
+        </div>
+    </footer>
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/a")
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/b")
+    <script type="text/javascript" language="javascript">
+
+    var bool = true;
+    //timeout function here to set visibility of pto pending
+    //pto pending button here
+    $(document).ready(function () {
+        if (@isAdmin.ToString().ToLower()) {
+            setInterval(function () {
+                CheckPTO();
+            }, 10000);
+
+            CheckPTO();
+        }
+    });
+
+    function CheckPTO() {
+        $.ajax({
+             url: '@Url.Action("CheckPTO", "Admin")',
+             dataType: "json",
+             type: "POST",
+             contentType: 'application/json; charset=utf-8',
+             async: true,
+             processData: false,
+             cache: false
+         }).done(function (result) {
+             if (result.Status == true) {
+                 //alert("10s have passed, showing button");
+                 $("#ptoClass").show();
+             }
+             else {
+                 //alert("10s have passed, hiding button");
+                 $("#ptoClass").hide();
+             }
+        });
+}
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>
+

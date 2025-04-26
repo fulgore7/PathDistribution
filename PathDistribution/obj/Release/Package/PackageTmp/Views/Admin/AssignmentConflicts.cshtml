@@ -1,0 +1,303 @@
+﻿@model PathDistribution.Models.AssignmentConflicts
+
+@{
+    ViewBag.Title = "Activity Conflicts";
+    Layout = "~/Views/Shared/_LayoutSched.cshtml";
+}
+
+@section styles
+{
+    @Styles.RenderFormat("<link rel=\"stylesheet\" href=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\" />", "~/bundles/2")
+    <style>
+        .rowDragHandle {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: .5em;
+            cursor: pointer;
+        }
+
+        /*css.gg*/
+        .gg-menu-grid-o {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(1);
+            /*width: 16px;*/
+            height: 16px;
+        }
+
+            .gg-menu-grid-o::before {
+                content: "";
+                display: block;
+                box-sizing: border-box;
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: #466b95;
+                box-shadow: 0 6px 0 #466b95, 6px 6px 0 #466b95, 0 0 0 #466b95, 0 0 0 #466b95, 0 0 0 #466b95, 6px 0 0 #466b95, 0 0 0 #466b95, 0 0 0 #466b95;
+                border-radius: 22px;
+            }
+
+        ul.nodot {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            ul.nodot:hover {
+                border: 1px solid #466b95;
+            }
+
+            ul.nodot li {
+                background-image: none;
+                padding: 2px 0 2px 5px;
+                font-size: 11px;
+            }
+
+        div.ui-multiselect-menu {
+            background-color: white;
+        }
+
+        ul.ui-multiselect-checkboxes li {
+            background-image: none;
+            padding: 0;
+        }
+
+        ul.ui-helper-reset li {
+            background-image: none;
+            padding: 0;
+        }
+
+        label.ui-multiselect-filter-label {
+            font: 11px/14px arial;
+            color: #9e7b48;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+
+        div.ui-multiselect-filter {
+            padding-bottom: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+}
+
+@section scripts
+{
+    @Scripts.RenderFormat("<script src=\"{0}?nocache=" + Guid.NewGuid().ToString("N") + "\"></script>", "~/bundles/e")
+    <script type="text/javascript">
+    function MoveAssignmentConflict(pkAssignmentConflict, filter, chrOldConflictType, chrNewConflictType) {
+        var intOldConflictType = ConvertConflictType(chrOldConflictType);
+        var intNewConflictType = ConvertConflictType(chrNewConflictType);
+        var map = {};
+        map["pkAssignmentConflict"] = pkAssignmentConflict;
+        map["intOldConflictType"] = intOldConflictType;
+        map["intNewConflictType"] = intNewConflictType;
+        $.ajax({
+            url: '@Url.Action("MoveAssignmentConflict", "Admin")',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(map),
+            async: true,
+            processData: false,
+            cache: false
+        }).done(function (result) {
+            if (result.Status == "Success") {
+                var abbrs = filter.split('_');
+                var cons = [];
+                cons.push(chrOldConflictType.substring(0, chrOldConflictType.indexOf('_')));
+                cons.push(chrNewConflictType.substring(0, chrNewConflictType.indexOf('_')));
+
+                var item = $("li[data-filter='" + abbrs[1] + "_" + abbrs[0] + "']");
+                var newCT = $("ul[id='" + cons[1] + "_" + abbrs[1] + "']");
+                $(item).appendTo(newCT);
+                $("#" + cons[1] + "_" + abbrs[1]).trigger('sortupdate');
+            } else {
+                alert("Oops");
+            }
+        });
+        }
+
+    function sortListAlphabetically(ul) {
+        var items = ul.children('li').get();
+        items.sort(function (a, b) {
+            var textA = $(a).data("filter").toUpperCase();
+            var textB = $(b).data("filter").toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+        $.each(items, function (index, item) {
+            ul.append(item);
+        });
+    }
+
+    function ConvertConflictType(chrConflictType) {
+        switch (chrConflictType.substring(0,chrConflictType.indexOf('_'))) {
+            case "NoConflict": return 0;
+            case "PartialConflict": return 1;
+            case "FullConflict": return 2;
+        }
+    }
+
+    function BuildCard(ids) {
+        $(ids).sortable({
+            connectWith: ids,
+            placeholder: "empty",
+        receive: function (e, ui) {
+            var pkAssignmentConflict = ui.item.data("id").toString();
+            var filter = ui.item.data("filter").toString();
+            var chrOldConflictType = ui.sender.attr("id");
+            var chrNewConflictType = ui.item.parent().attr("id");
+            MoveAssignmentConflict(pkAssignmentConflict, filter, chrOldConflictType, chrNewConflictType);
+            }
+        });
+
+        $(ids).on('sortupdate', function () { sortListAlphabetically($(this)); });
+    }
+    $(document).ready(function () {
+        @foreach (var item in Model.PrimaryConflicts)
+        {
+            var ids = $"#NoConflict_{item.chrPrimaryAbbr},#PartialConflict_{item.chrPrimaryAbbr},#FullConflict_{item.chrPrimaryAbbr}";
+            @:BuildCard('@ids');
+        }
+
+        $("#ActivityFilter").multiselect({
+            buttonWidth: "160px",
+            selectedText: "",
+            noneSelectedText: "",
+            header: ['checkAll', 'uncheckAll'],
+            linkInfo: {
+                checkAll: { text: "All" },
+                uncheckAll: { text: "None" }
+            },
+            click: function (e, ui) {
+                $("#conflicts li[data-filter$='_" + ui.value + "']").toggleClass("hidden", !ui.checked);
+            },
+            checkAll: function () {
+                var cbs = $(this).multiselect("getLabels").find("input");
+                $.each(cbs, function (i, cb) {
+                    $("#conflicts li[data-filter$='_" + cb.value + "']").toggleClass("hidden", false);
+                });
+            },
+            uncheckAll: function () {
+                var cbs = $(this).multiselect("getLabels").find("input");
+                $.each(cbs, function (i, cb) {
+                    $("#conflicts li[data-filter$='_" + cb.value + "']").toggleClass("hidden", true);
+                });
+            }
+        }).multiselectfilter({
+            width: "100px",
+            placeholder: ""
+        });
+
+        $("li.ui-multiselect-close").remove();
+
+        var handle = $("#StatusText");
+        var slide = ["Active", "Inactive", "All"];
+        $("#StatusFilter").slider({
+            min: 0,
+            max: 2,
+            range: "min",
+            value: 2,
+            create: function () {
+                handle.text(slide[$(this).slider("value")]);
+            },
+            slide: function (e, ui) {
+                handle.text(slide[ui.value]);
+            }
+        });
+    });
+    </script>
+}
+
+@section Left
+{
+    <table id="schedulefilter" style="width:95%">
+        <tr>
+            <td colspan="2" style="font-weight:bold">Filter</td>
+        </tr>
+        <tr>
+            <td class="text7">Activity</td>
+            <td>@Html.DropDownList("ActivityFilter", Model.PrimaryConflicts.Select(x => new SelectListItem() { Value = x.chrPrimaryAbbr, Text = x.chrPrimaryAbbr, Selected = true }), new { @id = "ActivityFilter", multiple = "true" })</td>
+        </tr>
+    </table>
+    <table id="schedulefilter" style="width:95%">
+        <tr>
+            <td class="text7" style="vertical-align: top; padding-top: 5px; width: 56.375px;">Status</td>
+            <td>
+                <div id="StatusFilter"></div>
+                <div id="StatusText" class="text2" style="width:100%;text-align:center;color:#466b95;"></div>
+            </td>
+        </tr>
+    </table>
+}
+
+<div id="content">
+    <div id="conflicts" style="display:flex;flex-wrap:wrap;align-items:stretch;">
+
+        @foreach (var pass in Model.PrimaryConflicts)
+        {
+            <div style="width: 22%; padding: 0 5px; background: linear-gradient(0deg, #EDE7DB 20%, #FAFAFA 80%, #EDE7DB 100%); " data-id="@pass.chrPrimaryAbbr">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);padding: 7px 0 7px 0;height:100%">
+                    <div style="font-weight: bold; text-align: center;padding-bottom:10px">@pass.chrPrimaryAbbr - @pass.chrPrimaryAssignment</div>
+                    <div style="display:flex;padding-bottom:10px;">
+                        <div style="flex:33.33%;padding-left:5px">
+                            <div class="text7" style="text-align:center;padding-bottom:5px;">None</div>
+                            <ul id="NoConflict_@pass.chrPrimaryAbbr" class="nodot" style="padding:5px;">
+                                @foreach (var item in Model.Conflicts.Where(x => x.chrPrimaryAbbr == pass.chrPrimaryAbbr && x.intConflictType == PathDistribution.Models.AssignmentConflictTypes.NoConflict))
+                                {
+                                    var id = $"{pass.chrPrimaryAbbr}_{item.chrRelatedAbbr}";
+                                    <li data-id="@item.pkAssignmentConflict" data-filter="@id">
+                                        <div style="width:16px;display:table-cell;padding-left:3px;">
+                                            <span class="rowDragHandle"><i class="gg-menu-grid-o"></i></span>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            @Html.DisplayFor(modelItem => item.chrRelatedAbbr)
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div style="flex:33.33%;padding-left:5px">
+                            <div class="text7" style="text-align: center; padding-bottom: 5px;">Partial</div>
+                            <ul id="PartialConflict_@pass.chrPrimaryAbbr" class="nodot" style="padding:5px;">
+                                @foreach (var item in Model.Conflicts.Where(x => x.chrPrimaryAbbr == pass.chrPrimaryAbbr && x.intConflictType == PathDistribution.Models.AssignmentConflictTypes.PartialConflict))
+                                {
+                                    var id = $"{pass.chrPrimaryAbbr}_{item.chrRelatedAbbr}";
+                                    <li data-id="@item.pkAssignmentConflict" data-filter="@id">
+                                        <div style="width:16px;display:table-cell;padding-left:3px;">
+                                            <span class="rowDragHandle"><i class="gg-menu-grid-o"></i></span>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            @Html.DisplayFor(modelItem => item.chrRelatedAbbr)
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div style="flex:33.33%;padding-left:5px">
+                            <div class="text7" style="text-align: center; padding-bottom: 5px;">Full</div>
+                            <ul id="FullConflict_@pass.chrPrimaryAbbr" class="nodot" style="padding:5px;">
+                                @foreach (var item in Model.Conflicts.Where(x => x.chrPrimaryAbbr == pass.chrPrimaryAbbr && x.intConflictType == PathDistribution.Models.AssignmentConflictTypes.FullConflict))
+                                {
+                                    var id = $"{pass.chrPrimaryAbbr}_{item.chrRelatedAbbr}";
+                                    <li data-id="@item.pkAssignmentConflict" data-filter="@id">
+                                        <div style="width:16px;display:table-cell;padding-left:3px;">
+                                            <span class="rowDragHandle"><i class="gg-menu-grid-o"></i></span>
+                                        </div>
+                                        <div style="display: table-cell;">
+                                            @Html.DisplayFor(modelItem => item.chrRelatedAbbr)
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model List<PathDistribution.Models.PathScheduleDates>
+
+@foreach (var item in Model)
+{
+    var dtestring = item.dte.ToShortDateString();
+    var dtecolor = item.isHoliday ? "red" : "rgb(54,69,90)";
+    var trcolor = item.isHoliday ? "lightpink" : "transparent";
+    var today = item.dte.Equals(DateTime.Today) ? "today" : "";
+
+    <div class="divTableRow @today" style="background-color:@trcolor">
+        <div class="divTableCell COLONE">@item.WeekNum</div>
+        <div class="divTableCell COLTWO WeekDay" style="color: @dtecolor">(@item.WkDay) @dtestring</div>
+        @foreach (var subitem in item.OffAssignments)
+        {
+            var bgcolor = subitem.Item3;
+            bgcolor = item.isHoliday ? "lightpink" : bgcolor;
+            bgcolor = bgcolor.Contains("/") ? "yellow" : bgcolor;
+            var off = bgcolor.Equals("yellow") ? "PEND" : subitem.Item2;
+
+            <div class="divTableCell COLALL @bgcolor" data-dt="@dtestring" data-path="@subitem.Item1" data-off="@off" title="@subitem.Item2">&nbsp;</div>
+        }
+    </div>
+}

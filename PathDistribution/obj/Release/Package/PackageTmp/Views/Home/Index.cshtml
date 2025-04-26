@@ -38,7 +38,7 @@
     <table style="width:100%;" cellspacing="0">
         <tr>
             <td colspan="13">
-                <button id="Generate" type="button" class="cartbutton">Generate</button>
+                @*<button id="Generate" type="button" class="cartbutton">Generate</button>
                 <button id="btnBreakdown" type="button" class="cartbutton">Breakdown</button>
                 @{
                     var mindate = Model.Settings.StartAccession.ToString("MM/dd/yyyy");
@@ -54,7 +54,7 @@
                         text = "Cases processed between " + mindate + " and " + maxdate;
                     }
                 }
-                <span class="text7" style="font-family: Arial">@text</span>
+                <span class="text7" style="font-family: Arial">@text</span>*@
                 <div class="text7" style="float:right">
                     <a href="@Url.Action("Index", "Start")">
                         <button type="button" class="cartbutton">Change Date</button>
@@ -96,7 +96,7 @@
     </table>
 </div>
 
-<div class="cart-tab">
+<div class="cart-tab" style="right:11em">
     <div class="cart-items" style="margin-top:4px;" id="moveslides">
         <table>
             @foreach (var item in Model.PathDistribution)
@@ -116,7 +116,7 @@
 
 @using (Html.BeginForm("AddSlides", "Home", FormMethod.Post, new { id = "AddSlides" }))
 {
-    <div class="cart-tab" style="top:26em">
+    <div class="cart-tab" style="right:2em">
         <div class="cart-items" style="margin-top:4px;" id="addslides">
             <table>
                 @for (int i = 0; i < Model.AddedSlides.Count; i++)
