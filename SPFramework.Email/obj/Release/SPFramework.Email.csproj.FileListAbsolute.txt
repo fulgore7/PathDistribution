@@ -1,0 +1,38 @@
+P:\2017\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+P:\2017\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+P:\2017\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csprojResolveAssemblyReference.cache
+P:\2017\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+P:\2017\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+P:\2018\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+P:\2018\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+P:\2018\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+P:\2018\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+P:\2018\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csprojResolveAssemblyReference.cache
+C:\tEMP\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+C:\tEMP\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+C:\tEMP\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csprojResolveAssemblyReference.cache
+C:\tEMP\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+C:\tEMP\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+P:\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+P:\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+P:\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+P:\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.CoreCompileInputs.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csprojAssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.dll
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\bin\Release\SPFramework.Email.pdb
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.AssemblyReference.cache
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.csproj.CoreCompileInputs.cache
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.dll
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Email\obj\Release\SPFramework.Email.pdb

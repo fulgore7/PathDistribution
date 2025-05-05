@@ -1,0 +1,36 @@
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll.config
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.XmlSerializers.dll
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.pdb
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csprojAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.CopyComplete
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.dll
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.pdb
+P:\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.XmlSerializers.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll.config
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.XmlSerializers.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramew.EE731281.Up2Date
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.XmlSerializers.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll.config
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.XmlSerializers.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.SSRS.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Release\SPFramework.Security.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.AssemblyReference.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramew.EE731281.Up2Date
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Release\SPFramework.SSRS.XmlSerializers.dll

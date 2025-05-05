@@ -1,0 +1,37 @@
+P:\2017\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+P:\2017\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csprojResolveAssemblyReference.cache
+P:\2017\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+Z:\Development\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+Z:\Development\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+Z:\Development\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+Z:\Development\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+C:\tEMP\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csprojResolveAssemblyReference.cache
+C:\tEMP\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+C:\tEMP\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csprojAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.CoreCompileInputs.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.dll
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\bin\Release\SPFramework.Security.pdb
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.AssemblyReference.cache
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.csproj.CoreCompileInputs.cache
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.dll
+\\spnas2\data\Users\JWebb\Development 202307\2019\SPFramework\SPFramework.Security\obj\Release\SPFramework.Security.pdb

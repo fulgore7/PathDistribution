@@ -1,0 +1,57 @@
+P:\2017\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+P:\2017\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+P:\2017\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+P:\2017\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csprojResolveAssemblyReference.cache
+P:\2017\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+P:\2017\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+Z:\Development\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+Z:\Development\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+Z:\Development\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+Z:\Development\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+Z:\Development\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csprojResolveAssemblyReference.cache
+Z:\Development\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+Z:\Development\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+C:\tEMP\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+C:\tEMP\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+C:\tEMP\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+C:\tEMP\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+C:\tEMP\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+C:\tEMP\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csprojResolveAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+P:\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+P:\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csprojAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CopyComplete
+P:\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+P:\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csprojAssemblyReference.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CopyComplete
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.AssemblyReference.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb

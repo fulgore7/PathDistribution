@@ -5,15 +5,15 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathDistribution", "PathDistribution\PathDistribution.csproj", "{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Data", "\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\SPFramework.Data.csproj", "{C5286B2B-0554-4825-9E82-033C4FBEFB81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Data", "SPFramework.Data\SPFramework.Data.csproj", "{C5286B2B-0554-4825-9E82-033C4FBEFB81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Security", "\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\SPFramework.Security.csproj", "{B86725C6-ED89-401A-A5F2-ED15B35E2E54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Security", "SPFramework.Security\SPFramework.Security.csproj", "{B86725C6-ED89-401A-A5F2-ED15B35E2E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Email", "\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\SPFramework.Email.csproj", "{662E18A0-FCC0-415D-8688-E3C0B1E1EF89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.Email", "SPFramework.Email\SPFramework.Email.csproj", "{662E18A0-FCC0-415D-8688-E3C0B1E1EF89}"
 EndProject
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "PathDistAccessSync", "PathDistAccessSync\PathDistAccessSync.dtproj", "{8C3E01F0-295D-4AAC-953F-489C3C2F3E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.SSRS", "\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\SPFramework.SSRS.csproj", "{BE5745B3-AC30-45A6-95E4-3F12EAE61CFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPFramework.SSRS", "SPFramework.SSRS\SPFramework.SSRS.csproj", "{BE5745B3-AC30-45A6-95E4-3F12EAE61CFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathDistributionTests", "PathDistributionTests\PathDistributionTests.csproj", "{BDF8BB88-69F2-400A-ACB3-FE911B461F7A}"
 EndProject
