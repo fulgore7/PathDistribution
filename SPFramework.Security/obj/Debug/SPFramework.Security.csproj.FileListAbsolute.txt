@@ -37,3 +37,9 @@ Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramewor
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.pdb

@@ -36,3 +36,13 @@ Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SS
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb

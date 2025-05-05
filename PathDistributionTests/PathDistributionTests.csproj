@@ -99,8 +99,8 @@
       <Project>{FDADC1A8-5C0A-4017-B046-E0F2A3CCF63B}</Project>
       <Name>PathDistribution</Name>
     </ProjectReference>
-    <ProjectReference Include="\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\SPFramework.Data.csproj">
-      <Project>{C5286B2B-0554-4825-9E82-033C4FBEFB81}</Project>
+    <ProjectReference Include="..\SPFramework.Data\SPFramework.Data.csproj">
+      <Project>{c5286b2b-0554-4825-9e82-033c4fbefb81}</Project>
       <Name>SPFramework.Data</Name>
     </ProjectReference>
   </ItemGroup>

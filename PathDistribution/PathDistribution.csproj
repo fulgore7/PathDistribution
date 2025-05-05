@@ -532,19 +532,19 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\SPFramework.Data.csproj">
+    <ProjectReference Include="..\SPFramework.Data\SPFramework.Data.csproj">
       <Project>{c5286b2b-0554-4825-9e82-033c4fbefb81}</Project>
       <Name>SPFramework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\SPFramework.Email.csproj">
+    <ProjectReference Include="..\SPFramework.Email\SPFramework.Email.csproj">
       <Project>{662e18a0-fcc0-415d-8688-e3c0b1e1ef89}</Project>
       <Name>SPFramework.Email</Name>
     </ProjectReference>
-    <ProjectReference Include="\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\SPFramework.Security.csproj">
+    <ProjectReference Include="..\SPFramework.Security\SPFramework.Security.csproj">
       <Project>{b86725c6-ed89-401a-a5f2-ed15b35e2e54}</Project>
       <Name>SPFramework.Security</Name>
     </ProjectReference>
-    <ProjectReference Include="\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\SPFramework.SSRS.csproj">
+    <ProjectReference Include="..\SPFramework.SSRS\SPFramework.SSRS.csproj">
       <Project>{be5745b3-ac30-45a6-95e4-3f12eae61cfe}</Project>
       <Name>SPFramework.SSRS</Name>
     </ProjectReference>

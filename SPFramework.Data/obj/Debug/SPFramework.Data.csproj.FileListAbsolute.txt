@@ -55,3 +55,12 @@ Z:\Development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Da
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.dll
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.pdb

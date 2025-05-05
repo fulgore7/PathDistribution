@@ -188,12 +188,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SPFramework.Security\SPFramework.Security.csproj">
-      <Project>{eeea2149-1df1-4bc6-bf9f-6c8f3909a707}</Project>
-      <Name>SPFramework.Security</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +216,12 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SPFramework_SSRS_ReportingService_ReportingService2010</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SPFramework.Security\SPFramework.Security.csproj">
+      <Project>{b86725c6-ed89-401a-a5f2-ed15b35e2e54}</Project>
+      <Name>SPFramework.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

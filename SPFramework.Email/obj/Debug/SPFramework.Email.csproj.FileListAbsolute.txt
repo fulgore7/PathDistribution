@@ -41,3 +41,9 @@ Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.E
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
 \\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
