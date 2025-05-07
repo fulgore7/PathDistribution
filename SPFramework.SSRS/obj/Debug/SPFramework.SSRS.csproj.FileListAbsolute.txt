@@ -1,0 +1,48 @@
+P:\2017\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+P:\2017\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+P:\2017\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+P:\2017\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+P:\2017\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csprojResolveAssemblyReference.cache
+P:\2017\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+P:\2017\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+P:\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+P:\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+P:\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+P:\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csprojAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CopyComplete
+P:\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+P:\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.AssemblyReference.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb

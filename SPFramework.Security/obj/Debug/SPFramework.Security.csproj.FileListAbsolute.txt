@@ -1,0 +1,45 @@
+P:\2017\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+P:\2017\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+P:\2017\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+P:\2017\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csprojResolveAssemblyReference.cache
+Z:\Development\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+Z:\Development\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+Z:\Development\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csprojResolveAssemblyReference.cache
+Z:\Development\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+Z:\Development\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+C:\tEMP\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+C:\tEMP\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+C:\tEMP\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csprojResolveAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+P:\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+P:\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csprojAssemblyReference.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csprojAssemblyReference.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.AssemblyReference.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.pdb

@@ -1,0 +1,49 @@
+P:\2017\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+P:\2017\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+P:\2017\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csprojResolveAssemblyReference.cache
+P:\2017\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+P:\2017\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+P:\2018\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+P:\2018\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+P:\2018\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csprojResolveAssemblyReference.cache
+P:\2018\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+P:\2018\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+Z:\Development\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+Z:\Development\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+Z:\Development\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csprojResolveAssemblyReference.cache
+Z:\Development\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+Z:\Development\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+C:\tEMP\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+C:\tEMP\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+C:\tEMP\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+C:\tEMP\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+C:\tEMP\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csprojResolveAssemblyReference.cache
+P:\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+P:\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+P:\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+P:\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+P:\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+P:\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csprojAssemblyReference.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+\\jwebb\p$\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.AssemblyReference.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+Z:\Development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.AssemblyReference.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+\\spnas2\data\users\jwebb\development 202307\2019\SPFramework\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.AssemblyReference.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
