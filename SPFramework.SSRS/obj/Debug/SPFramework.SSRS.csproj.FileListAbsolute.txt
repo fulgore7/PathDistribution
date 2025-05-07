@@ -46,3 +46,13 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFram
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll.config
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.SSRS.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\bin\Debug\SPFramework.Security.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramew.EE731281.Up2Date
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.SSRS\obj\Debug\SPFramework.SSRS.pdb

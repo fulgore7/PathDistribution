@@ -47,3 +47,9 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFram
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\bin\Debug\SPFramework.Email.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Email\obj\Debug\SPFramework.Email.pdb

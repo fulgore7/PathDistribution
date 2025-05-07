@@ -64,3 +64,12 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFram
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Data.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Data.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Security.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\bin\Debug\SPFramework.Security.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\obj\Debug\SPFramew.899FF621.Up2Date
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Data\obj\Debug\SPFramework.Data.pdb

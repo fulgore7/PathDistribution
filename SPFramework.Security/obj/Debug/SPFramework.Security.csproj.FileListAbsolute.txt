@@ -43,3 +43,9 @@ C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFram
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.dll
 C:\Users\mcoleman\source\repos\fulgore7\PathDistribution\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\bin\Debug\SPFramework.Security.pdb
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.dll
+C:\Users\Admin\source\repos\PathDistribution\SPFramework.Security\obj\Debug\SPFramework.Security.pdb
